@@ -1,6 +1,7 @@
 # よく使われてきたものと、理想のコミットメッセージ
 
 ## 今まで使ってきたコミットメッセージ
+
 - Fix: README.md
 - Fix: README.md and mono to single
 - Add: README.md and image
@@ -9,7 +10,9 @@
 - refactor: drawGradient()
 - add: gradient function
 
+
 ## よく使われる？使いそう、想定
+
 - ファイル、フォルダの追加
 - ファイル、フォルダの削除
 - デザインの修正
@@ -21,6 +24,7 @@
 - リファクタリング
 - 途中 work in progress
 
+
 ## 考え方
 
 > コードには How
@@ -30,10 +34,36 @@
 
 ref: https://www.praha-inc.com/lab/posts/commit-message
 
-- コミットメッセージには「なぜ、コードを変更したのか」を書く
+**コミットメッセージには「なぜ、コードを変更したのか」を書く**
+
+
+## ルール
+
+
+### prefix、変更内容
+
+```
+🎉 コミットメッセージ
+```
+
+
+### prefix、変更内容、issueの番号
+
+```
+🎉 コミットメッセージ (#issue)
+```
+
+
+### prefix、変更内容、理由、isseeの番号
+```
+🎉 コミットメッセージ (#issue)
+
+これはこういった理由で、こう追加しました。
+```
 
 
 ## 使えそうなもの
+
 - 🎉 `:tada:` 大きな機能追加、プロジェクトスタート
   - プロジェクトをはじめたときのコミット
 - 🚀 `rocket` デプロイした時に
@@ -57,6 +87,7 @@ ref: https://www.praha-inc.com/lab/posts/commit-message
   - 何かを削除
 - 🚚 `:truck:` 名前の変更、ファイル、パス、ルートを変更した時
 
+
 ### 使えそうだけど保留
 - 🙈 `:see_no_evil:` .gitignoreを追加、変更した時
 - 🚿 `:shower:` 不要な機能、使われなくなった機能の削除
@@ -67,4 +98,5 @@ ref: https://www.praha-inc.com/lab/posts/commit-message
 
 
 ## 参考
+
 - [gitmojiの絵文字ってどれを使えばいいの？ | cloud.config Tech Blog](https://tech-blog.cloud-config.jp/2021-12-21-git-moji-list/)
