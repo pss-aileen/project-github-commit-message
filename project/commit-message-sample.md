@@ -92,6 +92,7 @@ ref: https://www.praha-inc.com/lab/posts/commit-message
   - コードとは関係ない、今回だったらプロジェクトの内容やドキュメント、使い方の部分、README.mdの変更、追加
 - 🫧 `:bubbles:`
   - 本当にちょこっとだけどうでも良い変更...うーん
+  - `:bubbles::books:` で絵文字表示されなかった
 
 ### 使えそうだけど保留
 - 🙈 `:see_no_evil:` .gitignoreを追加、変更した時
