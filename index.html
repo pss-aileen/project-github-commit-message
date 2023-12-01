@@ -8,51 +8,62 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="font-mono">
 
-  <h1 class="text-3xl font-bold">Commit Easily</h1>
+  <div id="wrapper" class="px-5 my-5 max-w-3xl mx-auto">
 
-  <section>
 
-    <form>
-      <label>
-        <select>
-          <option value="">🎉: New Project</option>
-          <option value="">📝: Memo</option>
-          <option value="">🐛: Bug Fix</option>
-        </select>
-      </label>
+    <h1 class="text-3xl font-bold text-center">Commit Easily</h1>
 
-      <label>
-        タイトル、subject、主題
-        <input type="text">
-      </label>
+    <section class="mt-4">
 
-      <label>
-        <input type="radio"> コミットメッセージなし
-        <input type="radio"> コミットメッセージ有り
-      </label>
+      <form>
+        <label>
+          <h2 class="font-bold">prefix</h2>
+          <select class="border-solid border-2 block rounded-md px-2 py-1 w-full" multiple size="3">
+            <option value="">📝: Memo</option>
+            <option value="">🐛: Bug Fix</option>
+            <option value="">🐛: Bug Fix</option>
+            <option value="">🐛: Bug Fix</option>
+            <option value="">🎉: New Project</option>
+          </select>
+        </label>
 
-      <label>
-        コミットメッセージ詳細
-        <textarea>長いコミットメッセージ</textarea>
-      </label>
+        <label class="mt-5 block">
+          <h2 class="font-bold">subject</h2>
+          <input type="text" class="border-solid border-2 block rounded-md px-2 py-1 w-full"
+            placeholder="Add: index.html">
+        </label>
 
-      <label>
-        issue番号
-        <input type="number">
-      </label>
+        <label class="mt-5 block">
+          <h2 class="font-bold">additional on / off</h2>
+          <input type="radio"> コミットメッセージなし
+          <input type="radio"> コミットメッセージ有り
+        </label>
 
-      <button>生成</button>
+        <label class="mt-5 block">
+          <h2 class="font-bold">additional message</h2>
+          <textarea class="block border-solid border-2 rounded-md px-2 py-1 w-full"
+            placeholder="To create new"></textarea>
+        </label>
 
-      <div>
-        結果生成エリア
-      </div>
+        <label class="mt-5 block">
+          <h2 class="font-bold">issue</h2>
+          <input type="number" value="1" class="block border-solid border-2 rounded-md px-2 py-1 w-full">
+        </label>
 
-      <button class="bg-cyan-600">コピー</button>
-    </form>
+        <button class="mt-5">生成</button>
 
-  </section>
+        <div class="block border-solid border-2 rounded-md px-2 py-1 mt-5">
+          git commit -m "🚧 Add: index.html (#1)" -m "to create new"
+        </div>
+
+        <button class="bg-cyan-600 text-neutral-50 px-1 py-2 mt-5">コピー</button>
+      </form>
+
+    </section>
+
+  </div><!--wrapper-->
 
 </body>
 
