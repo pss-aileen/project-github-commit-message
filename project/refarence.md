@@ -2,6 +2,7 @@
 
 ## 絵文字
 - [📙 Emojipedia — 😃 Home of Emoji Meanings 💁👌🎍😍](https://emojipedia.org/)
+- [🎁 Emoji cheat sheet for GitHub, Basecamp, Slack & more](https://www.webfx.com/tools/emoji-cheat-sheet/)
 
 ## コミットメッセージ例
 - [Git-Emojis - cool git commits](https://csandunblogs.com/git-emojis/)
