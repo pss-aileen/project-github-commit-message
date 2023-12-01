@@ -1,4 +1,6 @@
-# 今まで使ってきたコミットメッセージ
+# よく使われてきたものと、理想のコミットメッセージ
+
+## 今まで使ってきたコミットメッセージ
 - Fix: README.md
 - Fix: README.md and mono to single
 - Add: README.md and image
@@ -7,7 +9,7 @@
 - refactor: drawGradient()
 - add: gradient function
 
-# よく使うコミットメッセージ
+## よく使われる？使いそう、想定
 - ファイル、フォルダの追加
 - ファイル、フォルダの削除
 - デザインの修正
@@ -19,5 +21,50 @@
 - リファクタリング
 - 途中 work in progress
 
+## 考え方
 
-# 理想のコミットメッセージ
+> コードには How
+> テストコードには What
+> コミットログには Why
+> コードコメントには Why not
+
+ref: https://www.praha-inc.com/lab/posts/commit-message
+
+- コミットメッセージには「なぜ、コードを変更したのか」を書く
+
+
+## 使えそうなもの
+- 🎉 `:tada:` 大きな機能追加、プロジェクトスタート
+  - プロジェクトをはじめたときのコミット
+- 🚀 `rocket` デプロイした時に
+- 🔖 `:bookmark` リリースする時に使う、バージョンを書く
+- 🐛 `:bug:` バグ修正
+  - 作った何かが動かない、とか？
+- 👍 `:+1:` 機能改善、追加
+  - 新しい機能を追加
+- ♻️ `:recycle:` リファクタリング
+  - コードの構造や設計を変更して、品質や可読性を向上させる
+  - コードの外部の挙動や機能は変更させない
+  - メンテナンス性の向上、重複コードの削除、冗長性の排除
+- 📝 `:memo:` ドキュメント
+  - md、ドキュメント、README.mdを更新した時など
+- 🎨 `:art:` デザインUI/UX
+  - デザイン面で変更を加えた時
+  - HTML/CSSになるかな...？
+- 🚧: `:construction:` Work in Progress 作業中
+  - とりあえず作業したもの？作業途中？
+- 🗑️ `:wastebasket:` 削除
+  - 何かを削除
+- 🚚 `:truck:` 名前の変更、ファイル、パス、ルートを変更した時
+
+### 使えそうだけど保留
+- 🙈 `:see_no_evil:` .gitignoreを追加、変更した時
+- 🚿 `:shower:` 不要な機能、使われなくなった機能の削除
+- 🚀 `:rocket:` パフォーマンス改善
+- ➕ `:heavy_plus_sign:` リソース・ライブラリの追加
+- ➖ `:heavy_minus_sign:` リソース・ライブラリの削除
+- 🆙 `:up:` リソース・ライブラリのアップデート
+
+
+## 参考
+- [gitmojiの絵文字ってどれを使えばいいの？ | cloud.config Tech Blog](https://tech-blog.cloud-config.jp/2021-12-21-git-moji-list/)
