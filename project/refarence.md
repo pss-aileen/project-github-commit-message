@@ -15,6 +15,8 @@
 - [Gitのコミットメッセージに絵文字を入れて社内の開発効率をあげた話【Emoji Prefix】 #Git - Qiita](https://qiita.com/oekazuma/items/0ce5082a07fe5c942de3)⭐️
 - [✨ 自分流絵文字で綺麗なコミット - OPTiM TECH BLOG](https://tech-blog.optim.co.jp/entry/2021/12/15/100000)
 - [gitmojiの絵文字ってどれを使えばいいの？ | cloud.config Tech Blog](https://tech-blog.cloud-config.jp/2021-12-21-git-moji-list/)⭐️
+- [emoji-matome/README.md at 1d720a99e57862c2789ddd9af33fddbf4c8c2f2e · nishina555/emoji-matome](https://github.com/nishina555/emoji-matome/blob/1d720a99e57862c2789ddd9af33fddbf4c8c2f2e/README.md)⭐️
+- [mygit/tips/commit_message.md at 00cef58665cb640c7bdd1ef76019ff96cfd2b128 · uribo/mygit](https://github.com/uribo/mygit/blob/00cef58665cb640c7bdd1ef76019ff96cfd2b128/tips/commit_message.md)⭐️
 
 ## リポジトリ
 - [carloscuesta/gitmoji: An emoji guide for your commit messages. 😜](https://github.com/carloscuesta/gitmoji)
