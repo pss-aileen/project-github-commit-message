@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-mono">
+<body class="font-mono text-gray-700 bg-gray-50">
 
   <div id="wrapper" class="px-5 my-5 max-w-3xl mx-auto">
 
@@ -20,12 +20,15 @@
       <form>
         <label>
           <h2 class="font-bold">prefix</h2>
-          <select class="border-solid border-2 block rounded-md px-2 py-1 w-full" multiple size="3">
+          <select class="border-solid border-2 block rounded-md px-2 py-1 w-full" multiple size="5">
+            <option value="">🚧: Work in Progress</option>
+            <option value="">♻️: Refactoring</option>
+            <option value="">👍: 機能改善、追加</option>
+            <option value="">🎨: Design UI / UX</option>
+            <option value="">🔥: 不要な機能、使われなくなった機能の削除</option>
+            <option value="">🗑️: ファイル、フォルダの削除</option>
             <option value="">📝: Memo</option>
-            <option value="">🐛: Bug Fix</option>
-            <option value="">🐛: Bug Fix</option>
-            <option value="">🐛: Bug Fix</option>
-            <option value="">🎉: New Project</option>
+            <option value="">🔖: release, version</option>
           </select>
         </label>
 
@@ -33,6 +36,9 @@
           <h2 class="font-bold">subject</h2>
           <input type="text" class="border-solid border-2 block rounded-md px-2 py-1 w-full"
             placeholder="Add: index.html">
+
+          hint
+          - Add, Update, Delete, Fix,
         </label>
 
         <label class="mt-5 block">
@@ -54,7 +60,7 @@
 
         <button class="mt-5">生成</button>
 
-        <div class="block border-solid border-2 rounded-md px-2 py-1 mt-5">
+        <div class="block border-solid border-2 rounded-md px-2 py-1 mt-5 bg-gray-100">
           git commit -m "🚧 Add: index.html (#1)" -m "to create new"
         </div>
 
