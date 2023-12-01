@@ -55,6 +55,7 @@ ref: https://www.praha-inc.com/lab/posts/commit-message
 
 
 ### prefix、変更内容、理由、isseeの番号
+
 ```
 🎉 コミットメッセージ (#issue)
 
@@ -90,8 +91,9 @@ ref: https://www.praha-inc.com/lab/posts/commit-message
   - 何かを削除
 - 📚 `:books:` ドキュメント
   - コードとは関係ない、今回だったらプロジェクトの内容やドキュメント、使い方の部分、README.mdの変更、追加
-- 💭 :thought_balloon: 本当にちょこっとだけどうでも良い変更
+- 💭 `:thought_balloon:` 本当にちょこっとだけどうでも良い変更
   - gitまわりの使い方のテストなど
+  - `:bubbles: :books:` 成功、ただ、やっぱり使い所がわからないので保留でもいいかも
 
 
 ### 使えそうだけど保留
