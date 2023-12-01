@@ -90,11 +90,12 @@ ref: https://www.praha-inc.com/lab/posts/commit-message
   - 何かを削除
 - 📚 `:books:` ドキュメント
   - コードとは関係ない、今回だったらプロジェクトの内容やドキュメント、使い方の部分、README.mdの変更、追加
-- 🫧 `:bubbles:`
-  - 本当にちょこっとだけどうでも良い変更...うーん
-  - `:bubbles::books:` で絵文字表示されなかった
+- 💭 :thought_balloon: 本当にちょこっとだけどうでも良い変更
+  - gitまわりの使い方のテストなど
+
 
 ### 使えそうだけど保留
+
 - 🙈 `:see_no_evil:` .gitignoreを追加、変更した時
 - 🚿 `:shower:` 不要な機能、使われなくなった機能の削除
 - 🚀 `:rocket:` パフォーマンス改善
@@ -103,6 +104,14 @@ ref: https://www.praha-inc.com/lab/posts/commit-message
 - 🆙 `:up:` リソース・ライブラリのアップデート
 
 
+### ボツ
+
+- 🫧 `:bubbles:`
+  - 本当にちょこっとだけどうでも良い変更...うーん
+  - `:bubbles::books:` で絵文字表示されなかった、もともと使えないっぽい
+
+
 ## 参考
 
 - [gitmojiの絵文字ってどれを使えばいいの？ | cloud.config Tech Blog](https://tech-blog.cloud-config.jp/2021-12-21-git-moji-list/)
+- [Complete list of github markdown emoji markup](https://gist.github.com/rxaviers/7360908)
