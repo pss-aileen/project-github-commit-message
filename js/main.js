@@ -16,15 +16,31 @@
     getMessage() {
       let message = "";
 
+      message = message + this.getCommitStartSentence();
+      
+      // if文を定数宣言する
+
+      const IssueAndMessage = this.issueRequired && this.commitMessage;
+      const IssueAndNoMessage = this.issueRequired && !this.commitMessage;
+      const NoIssueAndMessage = !this.issueRequired && this.commitMessage;
+      const NoIssueAndNoMessage = !this.issueRequired && !this.commitMessage;
+
+
       if (this.issueRequired && this.commitMessage) {
         console.log("issue番号必要、コメントあり");
+        message = message + this.getCommitFirstLineWithIssue() + this.getCommitSecondLine();
       } else if (this.issueRequired && !this.commitMessage) {
         console.log("issue番号必要、コメントなし");
+        message = message + this.getCommitFirstLineWithIssue();
       } else if (!this.issueRequired && this.commitMessage) {
         console.log("issue番号不要、コメントあり");
+        message = message + this.getCommitFirstLine() + this.getCommitSecondLine();
       } else if (!this.issueRequired && !this.commitMessage) {
         console.log("issue番号不要、コメントなし");
+        message = message + this.getCommitFirstLine();
       }
+
+      console.log(message);
     }
 
     getCommitStartSentence() {
@@ -90,6 +106,8 @@
     ""
   );
 
+
+  inputData.getMessage();
 
   // CLASSへ変更
 
