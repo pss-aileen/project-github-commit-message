@@ -8,17 +8,18 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-mono text-zinc-800">
+<body class="font-mono text-gray-700">
 
   <div id="wrapper" class="px-5 mt-10 mb-10 max-w-3xl mx-auto">
 
     <h1 class="text-3xl font-bold text-pink-600">Commit Easily</h1>
 
     <section class="mt-8">
-      <form>
+      <form name="commitForm">
         <label>
           <h2 class="font-bold text-lg">🧸 PREFIX</h2>
-          <select class="border-solid border-2 block rounded-md px-2 py-1 w-full mt-2" multiple size="4" id="prefix">
+          <select class="border-solid border-2 block rounded-md px-2 py-1 w-full mt-2" multiple size="4" id="prefix"
+            name="prefixOption">
             <option value="feature" selected>💕 FEATURE: 機能、メソッド、条件分岐、改良、ファイル追加</option>
             <option value="refactor">🫶 REFACTOR: 機能を変えず、コードを書き換えた時</option>
             <option value="docs">📖 DOCS: コードに関係ない、影響がない時</option>
@@ -31,7 +32,7 @@
         <label class="mt-5 block">
           <h2 class="font-bold text-lg">🎁 SUBJECT</h2>
           <input type="text" class="border-solid border-2 block rounded-md px-2 py-1 w-full mt-2"
-            placeholder="add function to create canvas" id="subject">
+            placeholder="add function to create canvas" id="subject" name="subject" value="ファンクションを追加しました @ main.js">
           <p class="mt-2 text-sm opacity-60">
             💡 add, update, delete
           </p>
@@ -41,25 +42,26 @@
           <h2 class="font-bold text-lg">📝 COMMENT</h2>
           <fieldset class="mt-2">
             <label class="cursor-pointer">
-              <input type="radio" name="additional-switch" checked> OFF
+              <input type="radio" name="commentSwitch" checked value="false"> OFF
             </label>
             /
             <label class="cursor-pointer">
-              <input type="radio" name="additional-switch"> ON
+              <input type="radio" name="commentSwitch" value="true"> ON
             </label>
           </fieldset>
           <textarea class="block border-solid border-2 rounded-md px-2 py-1 w-full mt-2" placeholder="To create new"
-            id="comment" disabled></textarea>
+            id="comment" disabled name="comment">test</textarea>
         </label>
 
         <label class="mt-5 block">
           <h2 class="font-bold text-lg">📍 ISSUE</h2>
-          <input type="number" value="1" class="block border-solid border-2 rounded-md px-2 py-1 w-full mt-2">
+          <input type="number" value="1" class="block border-solid border-2 rounded-md px-2 py-1 w-full mt-2"
+            name="issue">
         </label>
 
         <h2 class="font-bold text-lg mt-5">COMMIT MESSAGE</h2>
-        <textarea
-          class="block border-solid border-2 rounded-md px-2 py-1 mt-5 bg-gray-100 w-full">git commit -m "💕 FEATURE: add function to create canvas (#1)"</textarea>
+        <textarea class="block border-solid border-2 rounded-md px-2 py-1 mt-5 bg-gray-100 w-full"
+          name="generatedMessage" id="message-output">git commit -m "💕 FEATURE: add function to create canvas (#1)"</textarea>
 
         <div class="flex gap-4">
           <button
