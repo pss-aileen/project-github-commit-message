@@ -12,9 +12,35 @@
       this.issue = issue;
       this.commitMessage = commitMessage;
     }
+    
+    getMessage() {
+      let message = "";
 
-    showData() {
-      
+      if (this.issueRequired && this.commitMessage) {
+        console.log("issue番号必要、コメントあり");
+      } else if (this.issueRequired && !this.commitMessage) {
+        console.log("issue番号必要、コメントなし");
+      } else if (!this.issueRequired && this.commitMessage) {
+        console.log("issue番号不要、コメントあり");
+      } else if (!this.issueRequired && !this.commitMessage) {
+        console.log("issue番号不要、コメントなし");
+      }
+    }
+
+    getCommitStartSentence() {
+      return "git commit"
+    }
+
+    getCommitFirstLine() {
+      return ` -m ${this.prefix.icon} ${this.prefix.name}: ${this.subject}`;
+    }
+
+    getCommitFirstLineWithIssue() {
+      return ` -m ${this.prefix.icon} ${this.prefix.name}: ${this.subject} (${this.issue})`;
+    }
+
+    getCommitSecondLine() {
+      return ` -m ${this.comment}`;
     }
   }
 
@@ -25,9 +51,13 @@
       this.description = description;
     }
 
-    // showData() {
-    //   return `${this.name}, ${this.icon}, ${this.description}`;
-    // }
+    getPrefixIcon() {
+      return this.icon;
+    }
+
+    getPrefixName() {
+      return this.name;
+    }
   }
 
 
@@ -51,18 +81,23 @@
     newProject,
   ];
 
-
   const inputData = new data(
     feature,
     "subject",
     "comment",
-    true,
+    false,
     "05",
-    "commit message"
+    ""
   );
 
-  console.log(inputData);
+
   // CLASSへ変更
+
+
+
+
+
+
 
 
 
