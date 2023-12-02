@@ -4,8 +4,9 @@
   // データのクラスを作る？
 
   class data {
-    constructor(prefix, subject, comment, issueRequired, issue) {
-      this.prefix = prefix;
+    constructor(prefixIcon, prefixName, subject, comment, issueRequired, issue) {
+      this.prefixIcon = prefixIcon;
+      this.prefixName = prefixName;
       this.subject = subject;
       this.comment = comment;
       this.issueRequired = issueRequired.toLowerCase() === "true";
@@ -36,6 +37,7 @@
         message = message + this.getCommitFirstLine();
       }
 
+      return message;
     }
 
     getCommitStartSentence() {
@@ -43,11 +45,11 @@
     }
 
     getCommitFirstLine() {
-      return ` -m "${this.prefix.icon} ${this.prefix.name}: ${this.subject}"`;
+      return ` -m "${this.prefixIcon} ${this.prefixName}: ${this.subject}"`;
     }
 
     getCommitFirstLineWithIssue() {
-      return ` -m "${this.prefix.icon} ${this.prefix.name}: ${this.subject} (#${this.issue})"`;
+      return ` -m "${this.prefixIcon} ${this.prefixName}: ${this.subject} (#${this.issue})"`;
     }
 
     getCommitSecondLine() {
@@ -55,26 +57,28 @@
     }
   }
 
+  
+  
+  /**********************************
+   PREFIX LIST
+  **********************************/
+  
   class prefix {
     constructor(name, icon ,description) {
       this.name = name;
       this.icon = icon;
       this.description = description;
     }
-
+ 
     getPrefixIcon() {
       return this.icon;
     }
-
+ 
     getPrefixName() {
       return this.name;
     }
+
   }
-
-
-  /**********************************
-    PREFIX LIST
-  **********************************/
   
   const feature = new prefix("FEATURE", "💕", "メソッド、条件分岐、改良、ファイル追加した時");
   const refactor = new prefix("REFACTOR", "🫶", "機能を変えずにコードを書き換えた時");
@@ -115,20 +119,34 @@
   generateBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const inputData = getInput();
-    console.log(inputData.getMessage());
+    // console.log(inputData);
+    // console.log(inputData.getMessage());
+    const outputArea = document.getElementById("message-output");
+    outputArea.value = inputData.getMessage();
   });
   
   function getInput() {
     const commitForm = document.forms["commitForm"];
     
     const prefixOption = commitForm["prefixOption"].value;
+
+    let prefix = "";
+
+    // prefixListから、合致するものをひっぱりだしてきて、オブジェクトをprefixに代入する
+    prefixList.forEach((element, i) => {
+      if (element.name.toLowerCase() === prefixOption) {
+        prefix = prefixList[i]
+      }
+    });
+
     const subject = commitForm["subject"].value;
     const comment = commitForm["comment"].value;
     const issue = commitForm["issue"].value;
     const issueSwitch = commitForm["issueSwitch"].value;
 
     const inputData = new data(
-      prefixOption,
+      prefix.getPrefixIcon(),
+      prefix.getPrefixName(),
       subject,
       comment,
       issueSwitch,
