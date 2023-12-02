@@ -4,13 +4,12 @@
   // データのクラスを作る？
 
   class data {
-    constructor(prefix, subject, comment, issueRequired, issue, commitMessage) {
+    constructor(prefix, subject, comment, issueRequired, issue) {
       this.prefix = prefix;
       this.subject = subject;
       this.comment = comment;
       this.issueRequired = issueRequired;
       this.issue = issue;
-      this.commitMessage = commitMessage;
     }
     
     getMessage() {
@@ -20,22 +19,22 @@
       
       // if文を定数宣言する
 
-      const IssueAndMessage = this.issueRequired && this.commitMessage;
-      const IssueAndNoMessage = this.issueRequired && !this.commitMessage;
-      const NoIssueAndMessage = !this.issueRequired && this.commitMessage;
-      const NoIssueAndNoMessage = !this.issueRequired && !this.commitMessage;
+      const IssueAndMessage = this.issueRequired && this.comment;
+      const IssueAndNoMessage = this.issueRequired && !this.comment;
+      const NoIssueAndMessage = !this.issueRequired && this.comment;
+      const NoIssueAndNoMessage = !this.issueRequired && !this.comment;
 
 
-      if (this.issueRequired && this.commitMessage) {
+      if (IssueAndMessage) {
         console.log("issue番号必要、コメントあり");
         message = message + this.getCommitFirstLineWithIssue() + this.getCommitSecondLine();
-      } else if (this.issueRequired && !this.commitMessage) {
+      } else if (IssueAndNoMessage) {
         console.log("issue番号必要、コメントなし");
         message = message + this.getCommitFirstLineWithIssue();
-      } else if (!this.issueRequired && this.commitMessage) {
+      } else if (NoIssueAndMessage) {
         console.log("issue番号不要、コメントあり");
         message = message + this.getCommitFirstLine() + this.getCommitSecondLine();
-      } else if (!this.issueRequired && !this.commitMessage) {
+      } else if (NoIssueAndNoMessage) {
         console.log("issue番号不要、コメントなし");
         message = message + this.getCommitFirstLine();
       }
@@ -48,15 +47,15 @@
     }
 
     getCommitFirstLine() {
-      return ` -m ${this.prefix.icon} ${this.prefix.name}: ${this.subject}`;
+      return ` -m "${this.prefix.icon} ${this.prefix.name}: ${this.subject}"`;
     }
 
     getCommitFirstLineWithIssue() {
-      return ` -m ${this.prefix.icon} ${this.prefix.name}: ${this.subject} (${this.issue})`;
+      return ` -m "${this.prefix.icon} ${this.prefix.name}: ${this.subject} (#${this.issue})"`;
     }
 
     getCommitSecondLine() {
-      return ` -m ${this.comment}`;
+      return ` -m "${this.comment}"`;
     }
   }
 
@@ -99,24 +98,16 @@
 
   const inputData = new data(
     feature,
-    "subject",
-    "comment",
-    false,
+    "複雑で長い関数を追加しました",
+    "あれ、コメントは？",
+    true,
     "05",
-    ""
   );
 
 
   inputData.getMessage();
 
   // CLASSへ変更
-
-
-
-
-
-
-
 
 
 
@@ -184,8 +175,4 @@
   
   
 
-
-
-  // const generatedMessage = commitForm["generatedMessage"];
-  // console.log(generatedMessage.value);
 }
