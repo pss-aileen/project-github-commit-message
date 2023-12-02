@@ -8,7 +8,7 @@
       this.prefix = prefix;
       this.subject = subject;
       this.comment = comment;
-      this.issueRequired = issueRequired;
+      this.issueRequired = issueRequired.toLowerCase() === "true";
       this.issue = issue;
     }
     
@@ -16,14 +16,11 @@
       let message = "";
 
       message = message + this.getCommitStartSentence();
-      
-      // if文を定数宣言する
 
       const IssueAndMessage = this.issueRequired && this.comment;
       const IssueAndNoMessage = this.issueRequired && !this.comment;
       const NoIssueAndMessage = !this.issueRequired && this.comment;
       const NoIssueAndNoMessage = !this.issueRequired && !this.comment;
-
 
       if (IssueAndMessage) {
         console.log("issue番号必要、コメントあり");
@@ -39,7 +36,7 @@
         message = message + this.getCommitFirstLine();
       }
 
-      console.log(message);
+      // console.log(message);
     }
 
     getCommitStartSentence() {
@@ -96,83 +93,46 @@
     newProject,
   ];
 
-  const inputData = new data(
-    feature,
-    "複雑で長い関数を追加しました",
-    "あれ、コメントは？",
-    true,
-    "05",
-  );
-
-
-  inputData.getMessage();
-
-  // CLASSへ変更
-
-
 
   createPrefixPulldown();
 
   function createPrefixPulldown() {
-
     const prefixSelect = document.getElementById("prefix");
-    
     prefixList.forEach(item => {
       const option = document.createElement("option");
       const value = item.name;
       option.value = value.toLowerCase();
       option.textContent = `${item.icon} ${item.name}: ${item.description}`;
-
       prefixSelect.appendChild(option);
     });
   }
-
-
+  
+  
   const generateBtn = document.getElementById("btn-generate");
-
+  
   generateBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    messageOutput();
+    const inputData = getInput();
+    console.log(inputData.getMessage());
   });
-
+  
   function getInput() {
     const commitForm = document.forms["commitForm"];
-  
-    const subject = commitForm["subject"].value;
+    
     const prefixOption = commitForm["prefixOption"].value;
-    const commentSwitch = commitForm["commentSwitch"].value;
+    const subject = commitForm["subject"].value;
     const comment = commitForm["comment"].value;
     const issue = commitForm["issue"].value;
+    const issueSwitch = commitForm["issueSwitch"].value;
 
-    return { subject, prefixOption, commentSwitch, comment, issue };
+    const inputData = new data(
+      prefixOption,
+      subject,
+      comment,
+      issueSwitch,
+      issue,
+    );
+
+    return inputData;
   }
-
-
-  function messageOutput() {
-    const { subject, prefixOption, commentSwitch, comment, issue } = getInput();
-    console.log(subject);
-    console.log(prefixOption);
-    console.log(commentSwitch);
-    console.log(comment);
-    console.log(issue);
-
-    const messageOutputTarget = document.getElementById("message-output");
-    console.log(messageOutputTarget.value);
-
-    if (commentSwitch === "true") {
-      console.log("on");
-
-      messageOutputTarget.value = `git commit -m "${prefixOption} FEATURE: ${subject} (${issue})" -m "${comment}"`;
-
-    } else {
-      console.log("off");
-
-      messageOutputTarget.value = `git commit -m "${prefixOption} FEATURE: ${subject} (${issue})" -m "${comment}"`;
-
-    }
-  }
-
-  
-  
-
 }
