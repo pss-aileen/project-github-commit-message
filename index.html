@@ -10,7 +10,7 @@
 
 <body class="font-mono text-gray-700 bg-gray-50">
 
-  <div id="wrapper" class="px-5 my-5 max-w-3xl mx-auto">
+  <div id="wrapper" class="px-5 my-20 max-w-3xl mx-auto">
 
 
     <h1 class="text-3xl font-bold text-center">Commit Easily</h1>
@@ -21,14 +21,14 @@
         <label>
           <h2 class="font-bold">prefix</h2>
           <select class="border-solid border-2 block rounded-md px-2 py-1 w-full" multiple size="5">
-            <option value="">🚧: Work in Progress</option>
-            <option value="">♻️: Refactoring</option>
-            <option value="">👍: 機能改善、追加</option>
-            <option value="">🎨: Design UI / UX</option>
-            <option value="">🔥: 不要な機能、使われなくなった機能の削除</option>
-            <option value="">🗑️: ファイル、フォルダの削除</option>
-            <option value="">📝: Memo</option>
-            <option value="">🔖: release, version</option>
+            <option value="">🚧 : Work in Progress</option>
+            <option value="">: Refactoring</option>
+            <option value="">👍 : 機能改善、追加</option>
+            <option value="">🎨 : Design UI / UX</option>
+            <option value="">🔥 : 不要な機能、使われなくなった機能の削除</option>
+            <option value="">🗑️ : ファイル、フォルダの削除</option>
+            <option value="">📝 : Memo</option>
+            <option value="">🔖 : release, version</option>
           </select>
         </label>
 
@@ -64,12 +64,16 @@
           git commit -m "🚧 Add: index.html (#1)" -m "to create new"
         </div>
 
-        <button class="bg-cyan-600 text-neutral-50 px-1 py-2 mt-5">コピー</button>
+        <button
+          class="bg-cyan-600 text-neutral-50 px-1 py-2 mt-5 block border-solid rounded-md px-2 py-1 w-60">コピー</button>
       </form>
 
     </section>
 
   </div><!--wrapper-->
+
+
+  <script src="js/main.js"></script>
 
 </body>
 
