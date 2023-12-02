@@ -54,7 +54,52 @@
 
   
   
-  
+  const feature = {
+    name: "FEATURE",
+    icon: "💕",
+    description: "メソッド、条件分岐、改良、ファイル追加した時"
+  }
+
+  const refactor = {
+    name: "REFACTOR",
+    icon: "🫶",
+    description: "機能を変えずにコードを書き換えた時"
+  }
+
+  const docs = {
+    name: "DOCS",
+    icon: "📖",
+    description: "コードに関係ない、影響がない時"
+  }
+
+  const fix = {
+    name: "FIX",
+    icon: "🐝",
+    description: "不具合の修正"
+  }
+
+  const release = {
+    name: "RELEASE",
+    icon: "🔖",
+    description: "Version 1.0.0"
+  }
+
+  const newProject = {
+    name: "NEW",
+    icon: "🎉",
+    description: "BEGIN NEW PROJECT"
+  }
+
+  const prefixList = [
+    feature,
+    refactor,
+    docs,
+    fix,
+    release,
+    newProject,
+  ];
+
+  console.log(prefixList);
 
   // const generatedMessage = commitForm["generatedMessage"];
   // console.log(generatedMessage.value);
