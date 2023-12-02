@@ -1,8 +1,5 @@
 'use strict';
 {
-
-  // データのクラスを作る？
-
   class data {
     constructor(prefixIcon, prefixName, subject, comment, issueRequired, issue) {
       this.prefixIcon = prefixIcon;
@@ -24,16 +21,12 @@
       const NoIssueAndNoMessage = !this.issueRequired && !this.comment;
 
       if (IssueAndMessage) {
-        console.log("issue番号必要、コメントあり");
         message = message + this.getCommitFirstLineWithIssue() + this.getCommitSecondLine();
       } else if (IssueAndNoMessage) {
-        console.log("issue番号必要、コメントなし");
         message = message + this.getCommitFirstLineWithIssue();
       } else if (NoIssueAndMessage) {
-        console.log("issue番号不要、コメントあり");
         message = message + this.getCommitFirstLine() + this.getCommitSecondLine();
       } else if (NoIssueAndNoMessage) {
-        console.log("issue番号不要、コメントなし");
         message = message + this.getCommitFirstLine();
       }
 
@@ -58,7 +51,6 @@
   }
 
   
-  
   /**********************************
    PREFIX LIST
   **********************************/
@@ -77,7 +69,6 @@
     getPrefixName() {
       return this.name;
     }
-
   }
   
   const feature = new prefix("FEATURE", "💕", "メソッド、条件分岐、改良、ファイル追加した時");
@@ -119,15 +110,12 @@
   generateBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const inputData = getInput();
-    // console.log(inputData);
-    // console.log(inputData.getMessage());
     const outputArea = document.getElementById("message-output");
     outputArea.value = inputData.getMessage();
   });
   
   function getInput() {
     const commitForm = document.forms["commitForm"];
-    
     const prefixOption = commitForm["prefixOption"].value;
 
     let prefix = "";
