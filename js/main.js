@@ -58,7 +58,8 @@
     
     prefixList.forEach(item => {
       const option = document.createElement("option");
-      option.value = item.name;
+      const value = item.name;
+      option.value = value.toLowerCase();
       option.textContent = `${item.icon} ${item.name}: ${item.description}`;
 
       prefixSelect.appendChild(option);
@@ -70,7 +71,7 @@
 
   generateBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    getInput();
+    messageOutput();
   });
 
   function getInput() {
@@ -85,7 +86,6 @@
     return { subject, prefixOption, commentSwitch, comment, issue };
   }
 
-  messageOutput();
 
   function messageOutput() {
     const { subject, prefixOption, commentSwitch, comment, issue } = getInput();
