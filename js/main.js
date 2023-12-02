@@ -1,45 +1,33 @@
 'use strict';
 {
+  // CLASSへ変更
+
+  class prefix {
+    constructor(name, icon ,description) {
+      this.name = name;
+      this.icon = icon;
+      this.description = description;
+    }
+
+    showData() {
+      return `${this.name}, ${this.icon}, ${this.description}`;
+    }
+  }
+
 
   /**********************************
     PREFIX LIST
   **********************************/
+  
+  const feature = new prefix("FEATURE", "💕", "メソッド、条件分岐、改良、ファイル追加した時");
+  const refactor = new prefix("REFACTOR", "🫶", "機能を変えずにコードを書き換えた時");
+  const docs = new prefix("DOCS", "📖", "コードに関係ない、影響がない時");
+  const fix = new prefix("FIX", "🐝", "不具合の修正");
+  const release = new prefix("RELEASE", "🔖", "Version 1.0.0");
+  const newProject = new prefix("NEW", "🎉", "BEGIN NEW PROJECT");
 
-  const feature = {
-    name: "FEATURE",
-    icon: "💕",
-    description: "メソッド、条件分岐、改良、ファイル追加した時"
-  }
 
-  const refactor = {
-    name: "REFACTOR",
-    icon: "🫶",
-    description: "機能を変えずにコードを書き換えた時"
-  }
 
-  const docs = {
-    name: "DOCS",
-    icon: "📖",
-    description: "コードに関係ない、影響がない時"
-  }
-
-  const fix = {
-    name: "FIX",
-    icon: "🐝",
-    description: "不具合の修正"
-  }
-
-  const release = {
-    name: "RELEASE",
-    icon: "🔖",
-    description: "Version 1.0.0"
-  }
-
-  const newProject = {
-    name: "NEW",
-    icon: "🎉",
-    description: "BEGIN NEW PROJECT"
-  }
 
   const prefixList = [
     feature,
