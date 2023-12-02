@@ -36,7 +36,6 @@
         message = message + this.getCommitFirstLine();
       }
 
-      // console.log(message);
     }
 
     getCommitStartSentence() {
@@ -103,6 +102,9 @@
       const value = item.name;
       option.value = value.toLowerCase();
       option.textContent = `${item.icon} ${item.name}: ${item.description}`;
+      if (value.toLowerCase() === "feature") {
+        option.selected = true;
+      }
       prefixSelect.appendChild(option);
     });
   }
