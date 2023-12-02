@@ -8,64 +8,82 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-mono text-gray-700 bg-gray-50">
+<body class="font-mono text-zinc-800">
 
-  <div id="wrapper" class="px-5 my-20 max-w-3xl mx-auto">
+  <div id="wrapper" class="px-5 mt-10 mb-10 max-w-3xl mx-auto">
 
+    <h1 class="text-3xl font-bold text-pink-600">Commit Easily</h1>
 
-    <h1 class="text-3xl font-bold text-center">Commit Easily</h1>
-
-    <section class="mt-4">
+    <section class="mt-8">
       <form>
         <label>
-          <h2 class="font-bold">prefix</h2>
-          <select class="border-solid border-2 block rounded-md px-2 py-1 w-full" multiple size="5">
-            <option value="">💕 FEATURE:</option>
-            <option value="">🫶 RAFACTOR:</option>
-            <option value="">📖 DOCS:</option>
-            <option value="">🐝 FIX:</option>
-            <option value="">🔖 RELEASE: Version 1.0.0</option>
-            <option value="">🎉 NEW: BEGIN NEW PROJECT</option>
+          <h2 class="font-bold text-lg">🧸 PREFIX</h2>
+          <select class="border-solid border-2 block rounded-md px-2 py-1 w-full mt-2" multiple size="4">
+            <option value="feature" selected>💕 FEATURE: 機能、メソッド、条件分岐、改良、ファイル追加</option>
+            <option value="refactor">🫶 REFACTOR: 機能を変えず、コードを書き換えた時</option>
+            <option value="docs">📖 DOCS: コードに関係ない、影響がない時</option>
+            <option value="fix">🐝 FIX: 不具合の修正</option>
+            <option value="release">🔖 RELEASE: Version 1.0.0</option>
+            <option value="new">🎉 NEW: BEGIN NEW PROJECT</option>
           </select>
         </label>
 
         <label class="mt-5 block">
-          <h2 class="font-bold">subject</h2>
-          <input type="text" class="border-solid border-2 block rounded-md px-2 py-1 w-full"
-            placeholder="Add: index.html">
-
-          hint
-          - Add, Update, Delete, Fix,
+          <h2 class="font-bold text-lg">🖊️ SUBJECT</h2>
+          <input type="text" class="border-solid border-2 block rounded-md px-2 py-1 w-full mt-2"
+            placeholder="add function to create canvas">
+          <p class="mt-2 text-sm opacity-60">
+            💡 add, update, delete
+          </p>
         </label>
 
-        <label class="mt-5 block">
-          <h2 class="font-bold">additional on / off</h2>
-          <input type="radio"> コミットメッセージなし
-          <input type="radio"> コミットメッセージ有り
-        </label>
-
-        <label class="mt-5 block">
-          <h2 class="font-bold">additional message</h2>
-          <textarea class="block border-solid border-2 rounded-md px-2 py-1 w-full"
-            placeholder="To create new"></textarea>
-        </label>
-
-        <label class="mt-5 block">
-          <h2 class="font-bold">issue</h2>
-          <input type="number" value="1" class="block border-solid border-2 rounded-md px-2 py-1 w-full">
-        </label>
-
-        <button class="mt-5">生成</button>
-
-        <div class="block border-solid border-2 rounded-md px-2 py-1 mt-5 bg-gray-100">
-          git commit -m "🚧 Add: index.html (#1)" -m "to create new"
+        <div class="mt-5 block">
+          <h2 class="font-bold text-lg">🎁 ADDITIONAL ON/OFF</h2>
+          <div class="mt-2">
+            <label class="cursor-pointer">
+              <input type="radio" name="additional-switch" checked> OFF
+            </label>
+            /
+            <label class="cursor-pointer">
+              <input type="radio" name="additional-switch"> ON
+            </label>
+          </div>
         </div>
 
-        <button
-          class="bg-cyan-600 text-neutral-50 px-1 py-2 mt-5 block border-solid rounded-md px-2 py-1 w-60">コピー</button>
+        <label class="mt-5 block">
+          <h2 class="font-bold text-lg">📝 ADDITIONAL COMMENT</h2>
+          <textarea class="block border-solid border-2 rounded-md px-2 py-1 w-full mt-2" placeholder="To create new"
+            disabled></textarea>
+        </label>
+
+        <label class="mt-5 block">
+          <h2 class="font-bold text-lg">📍 ISSUE</h2>
+          <input type="number" value="1" class="block border-solid border-2 rounded-md px-2 py-1 w-full mt-2">
+        </label>
+
+        <h2 class="font-bold text-lg mt-5">commit message</h2>
+        <textarea
+          class="block border-solid border-2 rounded-md px-2 py-1 mt-5 bg-gray-100 w-full">git commit -m "💕 FEATURE: add function to create canvas (#1)"</textarea>
+
+        <div class="flex gap-4">
+          <button
+            class="bg-pink-600 text-neutral-50 px-1 py-2 mt-5 block border-solid rounded-md w-full text-lg tracking-widest">
+            GENERATE
+          </button>
+
+          <button
+            class="bg-pink-100 text-pink-600 px-1 py-2 mt-5 block border-solid rounded-md w-full text-lg tracking-widest">
+            COPY
+          </button>
+        </div>
       </form>
 
     </section>
+
+    <footer class="mt-8">
+      <small class="text-sm">
+        &copf; Commit Easily by <a href="https://github.com/pss-aileen" class="text-pink-700">Aileen</a></small>
+    </footer>
 
   </div><!--wrapper-->
 
