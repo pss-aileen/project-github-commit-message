@@ -1,6 +1,22 @@
 'use strict';
 {
-  // CLASSへ変更
+
+  // データのクラスを作る？
+
+  class data {
+    constructor(prefix, subject, comment, issueRequired, issue, commitMessage) {
+      this.prefix = prefix;
+      this.subject = subject;
+      this.comment = comment;
+      this.issueRequired = issueRequired;
+      this.issue = issue;
+      this.commitMessage = commitMessage;
+    }
+
+    showData() {
+      
+    }
+  }
 
   class prefix {
     constructor(name, icon ,description) {
@@ -9,9 +25,9 @@
       this.description = description;
     }
 
-    showData() {
-      return `${this.name}, ${this.icon}, ${this.description}`;
-    }
+    // showData() {
+    //   return `${this.name}, ${this.icon}, ${this.description}`;
+    // }
   }
 
 
@@ -26,9 +42,6 @@
   const release = new prefix("RELEASE", "🔖", "Version 1.0.0");
   const newProject = new prefix("NEW", "🎉", "BEGIN NEW PROJECT");
 
-
-
-
   const prefixList = [
     feature,
     refactor,
@@ -37,6 +50,22 @@
     release,
     newProject,
   ];
+
+
+  const inputData = new data(
+    feature,
+    "subject",
+    "comment",
+    true,
+    "05",
+    "commit message"
+  );
+
+  console.log(inputData);
+  // CLASSへ変更
+
+
+
 
   createPrefixPulldown();
 
