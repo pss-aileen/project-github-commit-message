@@ -144,4 +144,19 @@
     return inputData;
   }
 
+  const copyBtn = document.getElementById("btn-copy");
+
+  copyBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const text = document.getElementById("message-output").value;
+    navigator.clipboard.writeText(text);
+    copyBtn.textContent = "CLIPED!";
+    setTimeout(() => {
+      copyBtn.textContent = "COPY";
+    },
+      1000);
+  });
+
+
+
 } // end
