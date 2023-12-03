@@ -1,12 +1,11 @@
 'use strict';
 {
   class data {
-    constructor(prefixIcon, prefixName, subject, comment, issueRequired, issue) {
+    constructor(prefixIcon, prefixName, subject, comment, issue) {
       this.prefixIcon = prefixIcon;
       this.prefixName = prefixName;
       this.subject = subject;
       this.comment = comment;
-      this.issueRequired = issueRequired.toLowerCase() === "true";
       this.issue = issue;
     }
     
@@ -15,10 +14,10 @@
 
       message = message + this.getCommitStartSentence();
 
-      const IssueAndMessage = this.issueRequired && this.comment;
-      const IssueAndNoMessage = this.issueRequired && !this.comment;
-      const NoIssueAndMessage = !this.issueRequired && this.comment;
-      const NoIssueAndNoMessage = !this.issueRequired && !this.comment;
+      const IssueAndMessage = this.issue && this.comment;
+      const IssueAndNoMessage = this.issue && !this.comment;
+      const NoIssueAndMessage = !this.issue && this.comment;
+      const NoIssueAndNoMessage = !this.issue && !this.comment;
 
       if (IssueAndMessage) {
         message = message + this.getCommitFirstLineWithIssue() + this.getCommitSecondLine();
@@ -130,14 +129,12 @@
     const subject = commitForm["subject"].value;
     const comment = commitForm["comment"].value;
     const issue = commitForm["issue"].value;
-    const issueSwitch = commitForm["issueSwitch"].value;
 
     const inputData = new data(
       prefix.getPrefixIcon(),
       prefix.getPrefixName(),
       subject,
       comment,
-      issueSwitch,
       issue,
     );
 
