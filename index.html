@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Commit Easily</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="font-mono text-gray-700">
@@ -26,7 +27,7 @@
         <label class="mt-5 block">
           <h2 class="font-bold text-lg">🎁 SUBJECT</h2>
           <input type="text" class="border-solid border-2 block rounded-md px-2 py-1 w-full mt-2" id="subject"
-            name="subject" placeholder="ファンクションを追加しました @ main.js">
+            name="subject" placeholder="〜〜を追加、修正しした @ xxxx.js" autocomplete="off">
           <p class="mt-2 text-sm opacity-60">
             💡 add, update, delete
           </p>
@@ -34,21 +35,21 @@
 
         <label class="mt-5 block">
           <h2 class="font-bold text-lg">📝 COMMENT</h2>
-          <textarea class="block border-solid border-2 rounded-md px-2 py-1 w-full mt-2" placeholder="〜〜という理由で〜〜しました"
-            id="comment" name="comment"></textarea>
+          <textarea class="block border-solid border-2 rounded-md px-2 py-1 w-full mt-2 resize-none"
+            placeholder="〜〜という理由で〜〜した" rows="3" id="comment" name="comment"></textarea>
         </label>
 
         <label class="mt-5 block">
           <h2 class="font-bold text-lg">📍 ISSUE</h2>
           <input type="number" value="" class="block border-solid border-2 rounded-md px-2 py-1 w-full mt-2"
-            name="issue" placeholder="XX">
+            name="issue" placeholder="XX" autocomplete="off" min="1" max="9999">
           <p class="mt-2 text-sm opacity-60">
             💡 This value will be saved in LocalStorage.
           </p>
         </label>
 
         <h2 class="font-bold text-lg mt-5">🔮 COMMIT MESSAGE</h2>
-        <textarea class="block border-solid border-2 rounded-md px-2 py-1 mt-5 bg-gray-100 w-full"
+        <textarea class="block border-solid border-2 rounded-md px-2 py-1 mt-5 bg-gray-100 w-full resize-none" rows="3"
           name="generatedMessage" id="message-output">OUTPUT IS HERE</textarea>
 
         <div class="flex gap-4">
