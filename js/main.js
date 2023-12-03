@@ -1,5 +1,6 @@
 'use strict';
 {
+  
   class data {
     constructor(prefixIcon, prefixName, subject, comment, issue) {
       this.prefixIcon = prefixIcon;
