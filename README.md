@@ -1,6 +1,6 @@
 ![Commit Easily](project/images/image-screen.jpg)
 
-# Commit Easily
+# Commit Easily 
 
 Commit Easilyはコミットメッセージを簡単に何も考えずに作成できるWebアプリです。
 
@@ -16,6 +16,7 @@ Commit Easilyはコミットメッセージを簡単に何も考えずに作成�
 そんな人（自分）の悩みを解決するサービスです。
 
 URL: https://pss-aileen.github.io/project-github-commit-message/
+
 
 ## 使い方
 
@@ -40,3 +41,7 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
   - 3日
 - こだわり
   - 気分が上がるように可愛いアイコンを使ってデザインをまとめました
+
+---
+
+[Version 1.0.0]
