@@ -15,7 +15,7 @@ Commit Easilyはコミットメッセージを簡単に何も考えずに作成�
 
 そんな人（自分）の悩みを解決するサービスです。
 
-URL: 
+URL: https://pss-aileen.github.io/project-github-commit-message/
 
 ## 使い方
 
