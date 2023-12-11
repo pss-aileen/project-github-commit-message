@@ -87,6 +87,17 @@
     newProject,
   ];
 
+  const update = new prefix("UPDATE", "📚", "DAILY REPORT 231201");
+
+  const dailyTasksList = [
+    update,
+  ];
+
+  function getType() {
+    const typeSelect = document.getElementById("type");
+    
+  }
+
 
   createPrefixPulldown();
 
