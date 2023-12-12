@@ -67,11 +67,11 @@
       this.icon = icon;
       this.description = description;
     }
- 
+    
     getPrefixIcon() {
       return this.icon;
     }
- 
+    
     getPrefixName() {
       return this.name;
     }
@@ -94,8 +94,8 @@
   const update = new prefix("UPDATE", "📚", "DAILY REPORT 231201");
 
   // それぞれを配列に格納
-  const prefixList = [feature, refactor, docs, fix, release, newProject];
-  const dailyTasksList = [ update ];
+  const normalPrefixList = [feature, refactor, docs, fix, release, newProject];
+  const dailyTasksPrefixList = [ update ];
 
 
   /************************************************************
@@ -103,18 +103,6 @@
     TYPEを取得して、それに応じたPREFIXをセットする
   ************************************************************/
   
-  getType();
-
-  function getType() {
-    const typeSelect = document.getElementById("type");
-    const initType = typeSelect.value;
-    console.log(initType);
-
-    typeSelect.addEventListener("change", () => {
-      console.log(typeSelect.value);
-    });
-  }
-
 
   class Type {
     constructor(value) {
@@ -122,11 +110,58 @@
     }
 
     getType() {
-      return this.value;
+      // 結局ここで配列を介してやらんといかんわけだ
+
+      if (this.value === "normalPrefixList") {
+        return normalPrefixList;
+      }
+      
+      if (this.value === "dailyTasksPrefixList") {
+        return dailyTasksPrefixList;
+      }
+      
+      return "ERROR";
     }
   }
+  
+  getType();
 
-  const type = new Type("normal");
+  function getType() {
+    let type;
+    const typeSelect = document.getElementById("type");
+    const initType = typeSelect.value;
+    console.log("init type: " + initType);
+    type = new Type(initType);
+    
+    console.log(type.getType());
+    createPrefixPulldown(type.getType());
+
+    typeSelect.addEventListener("change", () => {
+      console.log("selected type: " + typeSelect.value);
+      type = new Type(typeSelect.value);
+      // ここにPREFIXセットの関数を入れれば良い！？
+      // console.log(test.getType());
+      createPrefixPulldown(type.getType());
+    });
+
+    const generateBtn = document.getElementById("btn-generate");
+  
+    generateBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const inputData = getInput(type.getType());
+      const outputArea = document.getElementById("message-output");
+      outputArea.value = inputData.getMessage();
+    });
+  }
+
+  /************************************************************
+    PREFIXのCLASS...？
+  ************************************************************/
+  /* 
+    - PREFIX自体に配列の名前をつける？
+    - 名前をつけて、入れ込んで、まとめるようにする
+    - で、その中のメソッドで呼び出す...？難しい...
+  */
 
 
   /************************************************************
@@ -134,13 +169,18 @@
     TYPEの種類によって、PREFIXに配列の一覧を展開する
   ************************************************************/
 
-  createPrefixPulldown();
+  // createPrefixPulldown();
 
   function createPrefixPulldown(prefixType) {
+    console.log(prefixType);
     const prefixSelect = document.getElementById("prefix");
 
-    // ここのprefixListを適宜入れ替える
-    prefixList.forEach((item, index) => {
+    while (prefixSelect.firstChild) {
+      prefixSelect.removeChild(prefixSelect.firstChild);
+    }
+
+    // ここのnormalPrefixListを適宜入れ替える
+    prefixType.forEach((item, index) => {
       const option = document.createElement("option");
       const value = item.name;
       option.value = value.toLowerCase();
@@ -159,25 +199,18 @@
     それ関連の処理
   ************************************************************/
   
-  const generateBtn = document.getElementById("btn-generate");
-  
-  generateBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const inputData = getInput();
-    const outputArea = document.getElementById("message-output");
-    outputArea.value = inputData.getMessage();
-  });
-  
-  function getInput() {
+  function getInput(prefixArray) {
+    console.log(prefixArray);
     const commitForm = document.forms["commitForm"];
     const prefixOption = commitForm["prefixOption"].value;
 
     let prefix = "";
 
-    // prefixListから、合致するものをひっぱりだしてきて、オブジェクトをprefixに代入する
-    prefixList.forEach((element, i) => {
+    // normalPrefixListから、合致するものをひっぱりだしてきて、オブジェクトをprefixに代入する
+    // normalPrefixをどうにかしてここに開いたをいれないかん
+    prefixArray.forEach((element, i) => {
       if (element.name.toLowerCase() === prefixOption) {
-        prefix = prefixList[i]
+        prefix = prefixArray[i]
       }
     });
 
