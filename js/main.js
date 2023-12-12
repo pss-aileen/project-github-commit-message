@@ -1,6 +1,11 @@
 'use strict';
 {
   
+  /************************************************************
+    CLASS DATA
+    コミットメッセージとして出力されるインスタンスを作る（最終データ）
+  ************************************************************/
+  
   class data {
     constructor(prefixIcon, prefixName, subject, comment, issue) {
       this.prefixIcon = prefixIcon;
@@ -51,9 +56,10 @@
   }
 
   
-  /**********************************
-   PREFIX LIST
-  **********************************/
+  /************************************************************
+    CLASS PREFIX
+    PREFIXを登録、インスタンスするためのCLASS
+  ************************************************************/
   
   class prefix {
     constructor(name, icon ,description) {
@@ -70,7 +76,13 @@
       return this.name;
     }
   }
+
+  /************************************************************
+    PREFIXのインスタンス
+    CLASS PREFIXでCOMMIT MESSAGEに必要なものを準備、配列に入れる
+  ************************************************************/
   
+  // NORMAL TYPE
   const feature = new prefix("FEATURE", "💕", "メソッド、条件分岐、改良、ファイル追加した時");
   const refactor = new prefix("REFACTOR", "🫶", "機能を変えずにコードを書き換えた時");
   const docs = new prefix("DOCS", "📖", "コードに関係ない、影響がない時");
@@ -78,43 +90,74 @@
   const release = new prefix("RELEASE", "🔖", "Version 1.0.0");
   const newProject = new prefix("NEW", "🎉", "BEGIN NEW PROJECT");
 
-  const prefixList = [
-    feature,
-    refactor,
-    docs,
-    fix,
-    release,
-    newProject,
-  ];
-
+  // DAILY REPORTS
   const update = new prefix("UPDATE", "📚", "DAILY REPORT 231201");
 
-  const dailyTasksList = [
-    update,
-  ];
+  // それぞれを配列に格納
+  const prefixList = [feature, refactor, docs, fix, release, newProject];
+  const dailyTasksList = [ update ];
+
+
+  /************************************************************
+    TYPEを取得する
+    TYPEを取得して、それに応じたPREFIXをセットする
+  ************************************************************/
+  
+  getType();
 
   function getType() {
     const typeSelect = document.getElementById("type");
-    
+    const initType = typeSelect.value;
+    console.log(initType);
+
+    typeSelect.addEventListener("change", () => {
+      console.log(typeSelect.value);
+    });
   }
 
 
+  class Type {
+    constructor(value) {
+      this.value = value;
+    }
+
+    getType() {
+      return this.value;
+    }
+  }
+
+  const type = new Type("normal");
+
+
+  /************************************************************
+    プルダウンを作る
+    TYPEの種類によって、PREFIXに配列の一覧を展開する
+  ************************************************************/
+
   createPrefixPulldown();
 
-  function createPrefixPulldown() {
+  function createPrefixPulldown(prefixType) {
     const prefixSelect = document.getElementById("prefix");
-    prefixList.forEach(item => {
+
+    // ここのprefixListを適宜入れ替える
+    prefixList.forEach((item, index) => {
       const option = document.createElement("option");
       const value = item.name;
       option.value = value.toLowerCase();
       option.textContent = `${item.icon} ${item.name}: ${item.description}`;
-      if (value.toLowerCase() === "feature") {
+      // ここを無差別に1個目のvalueが選択されるようにする→OK
+      if (index === 0) {
         option.selected = true;
       }
       prefixSelect.appendChild(option);
     });
   }
   
+  
+  /************************************************************
+    コミットメッセージを生成する
+    それ関連の処理
+  ************************************************************/
   
   const generateBtn = document.getElementById("btn-generate");
   
@@ -153,6 +196,12 @@
     return inputData;
   }
 
+
+  /************************************************************
+    コミットメッセージをコピーする
+    それ関連の処理
+  ************************************************************/
+  
   const copyBtn = document.getElementById("btn-copy");
 
   copyBtn.addEventListener("click", (e) => {
