@@ -1,42 +1,41 @@
 ![Commit Easily](project/images/image-screen.jpg)
 
 # Commit Easily 
-
 Commit Easilyはコミットメッセージを簡単に何も考えずに作成できるWebアプリです。
+
+[Version 2.0.0]からforkして、ご自身に合ったprefixを簡単に作成することができます。
 
 
 ## 概要
-
-- PREFIXの入力を簡単にしたい
-- 何のためのPREFIXかの解説も同時に見たい
+- prefixの入力を簡単にしたい
+- プロジェクトごとのprefixを簡単に取得、閲覧したい
+- 何のためのprefixかの解説も同時に見たい
 - スペースの開け方を統一したい
 - ターミナルの入力途中に間違ってエンターキーを押してやりなおしたくない
 - とにかく頭を無にして何も考えることなくコミットメッセージを考えたい
 
-そんな人（自分）の悩みを解決するサービスです。
+そんな人（自分）の悩みを解決するWebアプリです。
 
 URL: https://pss-aileen.github.io/project-github-commit-message/
 
 
 ## 使い方
-
-1. PREFIXを選択（デフォルトはFEATURE）
-2. 変更内容の概要を入力
-3. 詳細を書く（必要であれば）
-4. issue番号を書く（必要であれば）
-5. GENERATEをクリックしてコミットメッセージを生成
-6. COPYをクリックしてターミナルに貼り付け
+1. prefixのタイプを選択
+1. prefixを選択
+1. 変更内容の概要を入力
+1. 詳細を書く（必要であれば）
+1. issue番号を書く（必要であれば）
+1. GENERATEをクリックしてコミットメッセージを生成
+1. COPYをクリックしてターミナルに貼り付け
 
 
 ## 使用技術
-
 - HTML/CSS
 - JavaScript
 - Tailwind CSS
 
 
 ## 制作について
-
 - 制作期間
   - 3日
 - こだわり
@@ -44,4 +43,11 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
 
 ---
 
-[Version 1.0.0]
+#### [Version 2.0.0] 2023/12/13
+- 新機能
+  - プロジェクトごとにprefixを切り替えられる機能を追加
+- 修正
+  - prefixが複数選択できる問題を解決（HTMLのSelectからmultipleを削除）
+
+#### [Version 1.0.0] 2023/12/03
+
