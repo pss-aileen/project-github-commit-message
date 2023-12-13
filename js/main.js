@@ -1,7 +1,21 @@
 'use strict';
 {
   
-  class data {
+  /************************************************************
+    プロジェクトを追加したい時
+    - HTMLでTYPEのoptionを追加
+    - class Prefixでインスタンスを作成
+    - プロジェクトのPREFIX LISTを作成
+    - class TypeのgetType()で配列を返す
+    以上で完了！
+  ************************************************************/
+
+  /************************************************************
+    CLASS DATA
+    コミットメッセージとして出力されるインスタンスを作る（最終データ）
+  ************************************************************/
+  
+  class Data {
     constructor(prefixIcon, prefixName, subject, comment, issue) {
       this.prefixIcon = prefixIcon;
       this.prefixName = prefixName;
@@ -15,19 +29,19 @@
 
       message = message + this.getCommitStartSentence();
 
-      const IssueAndMessage = this.issue && this.comment;
-      const IssueAndNoMessage = this.issue && !this.comment;
-      const NoIssueAndMessage = !this.issue && this.comment;
-      const NoIssueAndNoMessage = !this.issue && !this.comment;
+      const WITH_NOTHING = !this.issue && !this.comment;
+      const WITH_ISSUE = this.issue && !this.comment;
+      const WITH_COMMENT = !this.issue && this.comment;
+      const WITH_ISSUE_AND_COMMENT = this.issue && this.comment;
 
-      if (IssueAndMessage) {
-        message = message + this.getCommitFirstLineWithIssue() + this.getCommitSecondLine();
-      } else if (IssueAndNoMessage) {
-        message = message + this.getCommitFirstLineWithIssue();
-      } else if (NoIssueAndMessage) {
-        message = message + this.getCommitFirstLine() + this.getCommitSecondLine();
-      } else if (NoIssueAndNoMessage) {
+      if (WITH_NOTHING) {
         message = message + this.getCommitFirstLine();
+      } else if (WITH_ISSUE) {
+        message = message + this.getCommitFirstLineWithIssue();
+      } else if (WITH_COMMENT) {
+        message = message + this.getCommitFirstLine() + this.getCommitSecondLine();
+      } else if (WITH_ISSUE_AND_COMMENT) {
+        message = message + this.getCommitFirstLineWithIssue() + this.getCommitSecondLine();
       }
 
       return message;
@@ -51,53 +65,125 @@
   }
 
   
-  /**********************************
-   PREFIX LIST
-  **********************************/
+  /************************************************************
+    CLASS PREFIX
+    PREFIXを登録、インスタンスするためのCLASS
+  ************************************************************/
   
-  class prefix {
+  class Prefix {
     constructor(name, icon ,description) {
       this.name = name;
       this.icon = icon;
       this.description = description;
     }
- 
+    
     getPrefixIcon() {
       return this.icon;
     }
- 
+    
     getPrefixName() {
       return this.name;
     }
   }
+
+  /************************************************************
+    PREFIXのインスタンス
+    CLASS PREFIXでCOMMIT MESSAGEに必要なものを準備、配列に入れる
+  ************************************************************/
+
+  const normalPrefixList = [];
+  CreateNormalPrefix();
+  function CreateNormalPrefix() {
+    const feature = new Prefix("FEATURE", "💕", "メソッド、条件分岐、改良、ファイル追加した時");
+    const refactor = new Prefix("REFACTOR", "🫶", "機能を変えずにコードを書き換えた時");
+    const docs = new Prefix("DOCS", "📖", "コードに関係ない、影響がない時");
+    const fix = new Prefix("FIX", "🐝", "不具合の修正");
+    const release = new Prefix("RELEASE", "🔖", "Version 1.0.0");
+    const newProject = new Prefix("NEW", "🎉", "BEGIN NEW PROJECT");
+    
+    normalPrefixList.push(feature, refactor, docs, fix, release, newProject);
+  }
+
+  const TILPrefixList = [];
+  CreateTILPrefix();
+  function CreateTILPrefix() {
+    const update = new Prefix("UPDATE", "📚", "DAILY REPORT 231201");
+    
+    TILPrefixList.push(update);
+  }
+
+
+  /************************************************************
+    TYPEを取得する
+    TYPEを取得して、それに応じたPREFIXをセットする
+  ************************************************************/
   
-  const feature = new prefix("FEATURE", "💕", "メソッド、条件分岐、改良、ファイル追加した時");
-  const refactor = new prefix("REFACTOR", "🫶", "機能を変えずにコードを書き換えた時");
-  const docs = new prefix("DOCS", "📖", "コードに関係ない、影響がない時");
-  const fix = new prefix("FIX", "🐝", "不具合の修正");
-  const release = new prefix("RELEASE", "🔖", "Version 1.0.0");
-  const newProject = new prefix("NEW", "🎉", "BEGIN NEW PROJECT");
+  class Type {
+    constructor(value) {
+      this.value = value;
+    }
 
-  const prefixList = [
-    feature,
-    refactor,
-    docs,
-    fix,
-    release,
-    newProject,
-  ];
+    getTypeArray() {
+      // 取得したTYPEによって、PREFIXの配列を返す
+      // HTMLのValueと配列名は同じにする
+      if (this.value === "normalPrefixList") {
+        return normalPrefixList;
+      }
+      
+      if (this.value === "TILPrefixList") {
+        return TILPrefixList;
+      }
+      
+      return "NO ARRAY";
+    }
+  }
+  
+  getType();
+
+  function getType() {
+    let type;
+    const typeSelect = document.getElementById("type");
+    const initType = typeSelect.value;
+    type = new Type(initType);
+    createPrefixPulldown(type.getTypeArray());
+
+    typeSelect.addEventListener("change", () => {
+      type = new Type(typeSelect.value);
+      createPrefixPulldown(type.getTypeArray());
+    });
+
+    const generateBtn = document.getElementById("btn-generate");
+  
+    generateBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const inputData = getInput(type.getTypeArray());
+      const outputArea = document.getElementById("message-output");
+      outputArea.value = inputData.getMessage();
+    });
+  }
 
 
-  createPrefixPulldown();
+  /************************************************************
+    プルダウンを作る
+    TYPEの種類によって、PREFIXに配列の一覧を展開する
+  ************************************************************/
 
-  function createPrefixPulldown() {
+  // createPrefixPulldown();
+
+  function createPrefixPulldown(prefixArray) {
     const prefixSelect = document.getElementById("prefix");
-    prefixList.forEach(item => {
+
+    // プルダウン初期化
+    while (prefixSelect.firstChild) {
+      prefixSelect.removeChild(prefixSelect.firstChild);
+    }
+
+    prefixArray.forEach((item, index) => {
       const option = document.createElement("option");
       const value = item.name;
       option.value = value.toLowerCase();
       option.textContent = `${item.icon} ${item.name}: ${item.description}`;
-      if (value.toLowerCase() === "feature") {
+      if (index === 0) {
         option.selected = true;
       }
       prefixSelect.appendChild(option);
@@ -105,25 +191,20 @@
   }
   
   
-  const generateBtn = document.getElementById("btn-generate");
+  /************************************************************
+    コミットメッセージを生成する
+    それ関連の処理
+  ************************************************************/
   
-  generateBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const inputData = getInput();
-    const outputArea = document.getElementById("message-output");
-    outputArea.value = inputData.getMessage();
-  });
-  
-  function getInput() {
+  function getInput(prefixArray) {
     const commitForm = document.forms["commitForm"];
-    const prefixOption = commitForm["prefixOption"].value;
+    const prefixValue = commitForm["prefix"].value;
 
     let prefix = "";
 
-    // prefixListから、合致するものをひっぱりだしてきて、オブジェクトをprefixに代入する
-    prefixList.forEach((element, i) => {
-      if (element.name.toLowerCase() === prefixOption) {
-        prefix = prefixList[i]
+    prefixArray.forEach((element, i) => {
+      if (element.name.toLowerCase() === prefixValue) {
+        prefix = prefixArray[i];
       }
     });
 
@@ -131,7 +212,7 @@
     const comment = commitForm["comment"].value;
     const issue = commitForm["issue"].value;
 
-    const inputData = new data(
+    const inputData = new Data(
       prefix.getPrefixIcon(),
       prefix.getPrefixName(),
       subject,
@@ -142,6 +223,12 @@
     return inputData;
   }
 
+
+  /************************************************************
+    コミットメッセージをコピーする
+    それ関連の処理
+  ************************************************************/
+  
   const copyBtn = document.getElementById("btn-copy");
 
   copyBtn.addEventListener("click", (e) => {
