@@ -112,6 +112,14 @@
     TILPrefixList.push(update);
   }
 
+  const practiceProjectPrefixList = [];
+  CreatePracticeProjectPrefix();
+  function CreatePracticeProjectPrefix() {
+    const add = new Prefix("ADD", "📖", "ファイル、学んだことの追加");
+    
+    practiceProjectPrefixList.push(add);
+  }
+
 
   /************************************************************
     TYPEを取得する
@@ -132,6 +140,10 @@
       
       if (this.value === "TILPrefixList") {
         return TILPrefixList;
+      }
+
+      if (this.value === "practiceProjectPrefixList") {
+        return practiceProjectPrefixList;
       }
       
       return "NO ARRAY";
@@ -242,6 +254,23 @@
       1000);
   });
 
+  /************************************************************
+    リセット
+    入力内容を全てリセットする
+  ************************************************************/
 
+  const resetBtn = document.getElementById("btn-reset");
+
+  resetBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const commitForm = document.forms["commitForm"];
+
+    commitForm["subject"].value = "";
+    commitForm["comment"].value = "";
+    commitForm["issue"].value = "";
+    document.getElementById("message-output").value = "🧙🪄";
+
+  });
 
 } // end

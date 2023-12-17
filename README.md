@@ -43,6 +43,12 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
 
 ---
 
+#### [Version 2.0.1] 2023/12/17
+- 新機能
+  - リセットボタン
+    - 自分のインターネット回線が遅くでリロードして書いた内容を消していると面倒だったので、リセットボタンを作成
+  - practice-project用のprefixの追加
+
 #### [Version 2.0.0] 2023/12/13
 - 新機能
   - プロジェクトごとにprefixを切り替えられる機能を追加
