@@ -13,16 +13,25 @@
 
   <div id="wrapper" class="px-5 mt-10 mb-10 max-w-xl mx-auto">
 
-    <h1 class="text-3xl font-bold text-pink-600">Commit Easily</h1>
+    <div class="flex gap-4 justify-between items-center">
+      <h1 class="text-3xl font-bold text-pink-600">Commit Easily</h1>
+
+      <button
+        class="bg-gray-100 px-1 py-1 block border-solid border-2 border-gray-300 rounded-md w-1/4 text-lg tracking-widest active:translate-y-0.5 transition hover:opacity-70"
+        id="btn-reset">
+        RESET
+      </button>
+    </div>
 
     <section class="mt-8">
-      <form name="commitForm">
 
-        <label>
+      <form name="commitForm">
+        <label class="mt-5 block">
           <h2 class="font-bold text-lg">📦 TYPE</h2>
           <select name="type" id="type" class="border-solid border-2 block rounded-md px-2 py-1 w-full mt-2">
             <option value="normalPrefixList">NORMAL</option>
             <option value="TILPrefixList">DAILY REPORTS</option>
+            <option value="practiceProjectPrefixList">PRACTICE PROJECT</option>
           </select>
         </label>
 
@@ -63,14 +72,14 @@
 
         <div class="flex gap-4">
           <button
-            class="bg-pink-600 text-neutral-50 px-1 py-2 mt-5 block border-solid rounded-md w-full text-lg tracking-widest active:translate-y-0.5 transition shadow-lg active:shadow-md active:shadow-pink-600/50 shadow-pink-600/50 hover:opacity-70"
-            id="btn-generate">
+            class="bg-pink-600 text-neutral-50 px-1 py-2 mt-5 block rounded-md w-full text-lg tracking-widest active:translate-y-0.5 transition shadow-lg active:shadow-md active:shadow-pink-600/50 shadow-pink-600/50 hover:opacity-70"
+            id="btn-generate" type="button">
             GENERATE
           </button>
 
           <button
-            class="bg-purple-600 text-neutral-50 px-1 py-2 mt-5 block border-solid rounded-md w-full text-lg tracking-widest transition active:translate-y-0.5 shadow-lg active:shadow-md shadow-purple-600/50 active:shadow-purple-600/50 hover:opacity-70"
-            id="btn-copy">
+            class="bg-purple-600 text-neutral-50 px-1 py-2 mt-5 block rounded-md w-full text-lg tracking-widest transition active:translate-y-0.5 shadow-lg active:shadow-md shadow-purple-600/50 active:shadow-purple-600/50 hover:opacity-70"
+            id="btn-copy" type="button">
             COPY
           </button>
         </div>
