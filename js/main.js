@@ -200,6 +200,31 @@
       }
       prefixSelect.appendChild(option);
     });
+
+
+    prefixChangeEvent();
+
+  }
+
+  function prefixChangeEvent() {
+    const selectElement = document.getElementById("prefix");
+    setSpecificSubject(selectElement.value);
+    
+    selectElement.addEventListener("change", () => {
+      setSpecificSubject(selectElement.value);
+    });
+  }
+
+  
+  function setSpecificSubject(prefix) {
+    const subjectElement = document.getElementById("subject");
+    
+    if (prefix === "update") {
+      const day = new Date()
+      subjectElement.value = `DAILY REPORT ${day.getFullYear()}${day.getMonth() + 1}${day.getDate()}`;
+    } else {
+      subjectElement.value = "";
+    }
   }
   
   
