@@ -94,11 +94,11 @@
   const normalPrefixList = [];
   CreateNormalPrefix();
   function CreateNormalPrefix() {
-    const feature = new Prefix("FEATURE", "💕", "メソッド、条件分岐、改良、ファイル追加した時");
+    const feature = new Prefix("FEAT", "💕", "メソッド、条件分岐、改良、ファイル追加した時");
     const refactor = new Prefix("REFACTOR", "🫶", "機能を変えずにコードを書き換えた時");
-    const docs = new Prefix("DOCS", "📖", "コードに関係ない、影響がない時");
+    const docs = new Prefix("DOCS", "📝", "コードに関係ない、影響がない時");
     const fix = new Prefix("FIX", "🐝", "不具合の修正");
-    const release = new Prefix("RELEASE", "🔖", "Version 1.0.0");
+    const release = new Prefix("RELEASE", "🚀", "Version 1.0.0");
     const newProject = new Prefix("NEW", "🎉", "BEGIN NEW PROJECT");
     
     normalPrefixList.push(feature, refactor, docs, fix, release, newProject);
