@@ -43,20 +43,20 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
 
 ---
 
-#### [Version 1.0.0] 2023/12/03
-
-#### [Version 2.0.0] 2023/12/13
-- 新機能
-  - プロジェクトごとにprefixを切り替えられる機能を追加
-- 修正
-  - prefixが複数選択できる問題を解決（HTMLのSelectからmultipleを削除）
-
-#### [Version 2.0.1] 2023/12/17
-- 新機能
-  - リセットボタン
-    - 自分のインターネット回線が遅くでリロードして書いた内容を消していると面倒だったので、リセットボタンを作成
-  - practice-project用のprefixの追加
-
-#### [Version 2.0.2] 2023/12/22
-- 新機能
-  - prefixでUPDATEを選んだ時、日付が自動でSUBJECTに入るようにした
+- [Version 1.0.0] 2023/12/03
+- [Version 2.0.0] 2023/12/13
+  - 新機能
+    - プロジェクトごとにprefixを切り替えられる機能を追加
+  - 修正
+    - prefixが複数選択できる問題を解決（HTMLのSelectからmultipleを削除）
+- [Version 2.0.1] 2023/12/17
+  - 新機能
+    - リセットボタン
+      - 自分のインターネット回線が遅くでリロードして書いた内容を消していると面倒だったので、リセットボタンを作成
+    - practice-project用のprefixの追加
+- [Version 2.0.2] 2023/12/22
+  - 新機能
+    - prefixでUPDATEを選んだ時、日付が自動でSUBJECTに入るようにした
+- [Version 2.0.3] 2023/12/23
+  - 修正
+    - UPDATEの自動日付を20231223から231223になるように変更
