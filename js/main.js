@@ -221,7 +221,7 @@
     
     if (prefix === "update") {
       const day = new Date()
-      subjectElement.value = `DAILY REPORT ${day.getFullYear()}${day.getMonth() + 1}${day.getDate()}`;
+      subjectElement.value = `DAILY REPORT ${day.getFullYear() - 2000}${day.getMonth() + 1}${day.getDate()}`;
     } else {
       subjectElement.value = "";
     }
