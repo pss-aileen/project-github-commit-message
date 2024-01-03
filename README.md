@@ -1,4 +1,4 @@
-![Commit Easily](project/images/image-screen.jpg)
+![Commit Easily](_project/images/image-screen.jpg)
 
 # Commit Easily 
 Commit Easilyはコミットメッセージを簡単に何も考えずに作成できるWebアプリです。
