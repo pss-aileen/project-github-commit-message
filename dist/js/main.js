@@ -218,10 +218,14 @@
   
   function setSpecificSubject(prefix) {
     const subjectElement = document.getElementById("subject");
-    
+    // console.log(prefix);
     if (prefix === "update") {
       const day = new Date()
       subjectElement.value = `DAILY REPORT ${day.getFullYear() - 2000}${String(day.getMonth() + 1).padStart(2, "0")}${String(day.getDate()).padStart(2, "0")}`;
+    } else if (prefix === "new") {
+      subjectElement.value = "BEGIN NEW PROJECT";
+    } else if (prefix === "release") {
+      subjectElement.value = "Version";
     } else {
       subjectElement.value = "";
     }
@@ -297,5 +301,107 @@
     document.getElementById("message-output").value = "🧙🪄";
 
   });
+
+  /************************************************************
+    ダークモード対応
+  ************************************************************/
+  
+  darkmode();
+  function darkmode() {
+    const monitorMode = JSON.parse(localStorage.getItem("displayMode"));
+    
+    const modeChangeBtn = document.getElementById("btn-mode");
+
+    const bodyElement = document.querySelector("body");
+    const resetBtn = document.getElementById("btn-reset");
+    const commitForm = document.forms["commitForm"];
+    const type = commitForm["type"];
+    const prefix = commitForm["prefix"];
+    const subject = commitForm["subject"];
+    const comment = commitForm["comment"];
+    const issue = commitForm["issue"];
+    const generatedMessage = commitForm["message-output"];
+    
+    modeChangeBtn.addEventListener("click", () => {
+      if (bodyElement.classList.contains("text-gray-700")) {
+        setMode("dark");
+      } else {
+        setMode("light");
+      }
+    });
+
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if (darkModeMediaQuery.matches) {
+      console.log("judge: system dark");
+      setMode("dark");
+    } else if (!darkModeMediaQuery.matches) {
+      console.log("judge: system light");
+      setMode("light");
+    } else if (monitorMode === "darkmode") {
+      console.log("localStorage DARK");
+      setMode("dark");
+    } else {
+      console.log("localStorage LIGHT");
+      setMode("light");
+    }
+    
+    function setMode(mode) {
+      if (mode === "dark") {
+        localStorage.setItem("displayMode", JSON.stringify("darkmode"));
+        modeChangeBtn.textContent = "🌛";
+        bodyElement.classList.remove("text-gray-700")
+        changeClass(bodyElement, "add", "body");
+        changeClass(resetBtn, "add", "resetBtn");
+        changeClass(type, "add", "input");
+        changeClass(prefix, "add", "input");
+        changeClass(subject, "add", "input");
+        changeClass(comment, "add", "input");
+        changeClass(issue, "add", "input");
+        changeClass(generatedMessage, "add", "generatedMessage");
+      } else {
+        localStorage.setItem("displayMode", JSON.stringify("lightmode"));
+        modeChangeBtn.textContent = "🌞";
+        bodyElement.classList.add("text-gray-700");
+        changeClass(bodyElement, "remove", "body");
+        changeClass(resetBtn, "remove", "resetBtn");
+        changeClass(resetBtn, "remove", "resetBtn");
+        changeClass(type, "remove", "input");
+        changeClass(prefix, "remove", "input");
+        changeClass(subject, "remove", "input");
+        changeClass(comment, "remove", "input");
+        changeClass(issue, "remove", "input");
+        changeClass(generatedMessage, "remove", "generatedMessage");
+      }
+    }
+    
+    function changeClass(targetElement, addOrRemove, typeName) {
+      const darkModeTypes = {
+        body: {
+          class: ["text-gray-300", "bg-slate-900"],
+        },
+        resetBtn: {
+          class: ["bg-slate-800", "order-slate-600"],
+        },
+        input: {
+          class: ["border-slate-600", "bg-slate-800"],
+        },
+        generatedMessage: {
+          class: ["border-slate-600", "bg-slate-700"],
+        }
+      };
+      
+      const style1 = darkModeTypes[typeName].class[0];
+      const style2 = darkModeTypes[typeName].class[1];
+      
+      if (addOrRemove === "add") {
+        targetElement.classList.add(style1, style2);
+      } else if(addOrRemove === "remove") {
+        targetElement.classList.remove(style1, style2);
+      } else {
+        console.log("NO SET ADD OR REMOVE");
+      }
+    }
+  } // function end
 
 } // end

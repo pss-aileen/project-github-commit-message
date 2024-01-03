@@ -42,6 +42,12 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
   - 気分が上がるように可愛いアイコンを使ってデザインをまとめました
 
 ---
+#### [Version 2.0.5] 2024/01/03
+- 新機能
+  - ダークモードに対応
+- 修正
+  - RELEASE、NEWの時、SUBJECTを自動的に出力
+
 #### [Version 2.0.4] 2024/01/01
 - 修正
   - UPDATEの日付を2411→240101になるよう変更
