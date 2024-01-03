@@ -9,13 +9,18 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class="bg-slate-900 font-mono text-gray-300">
+<body class="font-mono text-gray-700">
+
+  <div class="fixed bottom-3 right-3 text-3xl cursor-pointer hover:opacity-70 active:translate-y-0.5 select-none">
+    🌞
+  </div>
+
   <div id="wrapper" class="mx-auto mb-10 mt-10 max-w-xl px-5">
     <div class="flex items-center justify-between gap-4">
       <h1 class="text-3xl font-bold text-pink-600">Commit Easily</h1>
 
       <button
-        class="block w-1/4 rounded-md border-2 border-solid bg-slate-800 border-slate-600 px-1 py-1 text-lg tracking-widest transition hover:opacity-70 active:translate-y-0.5"
+        class="block w-1/4 rounded-md border-2 border-solid border-gray-300 bg-gray-100 px-1 py-1 text-lg tracking-widest transition hover:opacity-70 active:translate-y-0.5 select-none"
         id="btn-reset">
         RESET
       </button>
@@ -25,8 +30,7 @@
       <form name="commitForm">
         <label class="mt-5 block">
           <h2 class="text-lg font-bold">📦 TYPE</h2>
-          <select name="type" id="type"
-            class="mt-2 block w-full rounded-md border-2 border-solid border-slate-600 bg-slate-800 px-2 py-1">
+          <select name="type" id="type" class="mt-2 block w-full rounded-md border-2 border-solid px-2 py-1">
             <option value="normalPrefixList">NORMAL</option>
             <option value="TILPrefixList">DAILY REPORTS</option>
             <option value="practiceProjectPrefixList">
@@ -37,29 +41,26 @@
 
         <label class="mt-5 block">
           <h2 class="text-lg font-bold">🧸 PREFIX</h2>
-          <select class="mt-2 block w-full rounded-md border-2 border-solid border-slate-600 bg-slate-800 px-2 py-1"
-            size="4" id="prefix" name="prefix"></select>
+          <select class="mt-2 block w-full rounded-md border-2 border-solid px-2 py-1" size="4" id="prefix"
+            name="prefix"></select>
         </label>
 
         <label class="mt-5 block">
           <h2 class="text-lg font-bold">🎁 SUBJECT</h2>
-          <input type="text"
-            class="mt-2 block w-full rounded-md border-2 border-solid border-slate-600 bg-slate-800 px-2 py-1"
-            id="subject" name="subject" placeholder="〜〜を追加、修正しした @ xxxx.js" autocomplete="off" />
+          <input type="text" class="mt-2 block w-full rounded-md border-2 border-solid px-2 py-1" id="subject"
+            name="subject" placeholder="〜〜を追加、修正しした @ xxxx.js" autocomplete="off" />
           <p class="mt-2 text-sm opacity-60">💡 add, update, delete</p>
         </label>
 
         <label class="mt-5 block">
           <h2 class="text-lg font-bold">📝 COMMENT</h2>
-          <textarea
-            class="mt-2 block w-full resize-none rounded-md border-2 border-solid border-slate-600 bg-slate-800 px-2 py-1"
+          <textarea class="mt-2 block w-full resize-none rounded-md border-2 border-solid px-2 py-1"
             placeholder="〜〜という理由で〜〜した" rows="3" id="comment" name="comment"></textarea>
         </label>
 
         <label class="mt-5 block">
           <h2 class="text-lg font-bold">📍 ISSUE</h2>
-          <input type="number" value=""
-            class="mt-2 block w-full rounded-md border-2 border-solid border-slate-600 bg-slate-800 px-2 py-1"
+          <input type="number" value="" class="mt-2 block w-full rounded-md border-2 border-solid px-2 py-1"
             name="issue" placeholder="XX" autocomplete="off" min="1" max="9999" />
           <p class="mt-2 text-sm opacity-60">
             💡 This value will be saved in LocalStorage.
@@ -67,20 +68,19 @@
         </label>
 
         <h2 class="mt-5 text-lg font-bold">🔮 COMMIT MESSAGE</h2>
-        <textarea
-          class="mt-5 block w-full resize-none rounded-md border-2 border-solid border-slate-600 bg-slate-700 px-2 py-1"
-          rows="3" name="generatedMessage" id="message-output">
+        <textarea class="mt-5 block w-full resize-none rounded-md border-2 border-solid bg-gray-100 px-2 py-1" rows="3"
+          name="generatedMessage" id="message-output">
 🌝✨</textarea>
 
         <div class="flex gap-4">
           <button
-            class="mt-5 block w-full rounded-md bg-pink-600 px-1 py-2 text-lg tracking-widest text-neutral-50 shadow-lg shadow-pink-600/50 transition hover:opacity-70 active:translate-y-0.5 active:shadow-md active:shadow-pink-600/50"
+            class="mt-5 block w-full rounded-md bg-pink-600 px-1 py-2 text-lg tracking-widest text-neutral-50 shadow-lg shadow-pink-600/50 transition hover:opacity-70 active:translate-y-0.5 active:shadow-md active:shadow-pink-600/50 select-none"
             id="btn-generate" type="button">
             GENERATE
           </button>
 
           <button
-            class="mt-5 block w-full rounded-md bg-purple-600 px-1 py-2 text-lg tracking-widest text-neutral-50 shadow-lg shadow-purple-600/50 transition hover:opacity-70 active:translate-y-0.5 active:shadow-md active:shadow-purple-600/50"
+            class="mt-5 block w-full rounded-md bg-purple-600 px-1 py-2 text-lg tracking-widest text-neutral-50 shadow-lg shadow-purple-600/50 transition hover:opacity-70 active:translate-y-0.5 active:shadow-md active:shadow-purple-600/50 select-none"
             id="btn-copy" type="button">
             COPY
           </button>
