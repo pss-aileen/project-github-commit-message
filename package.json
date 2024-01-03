@@ -14,7 +14,8 @@
     "watch": "concurrently \"npm run watch:html\" \"npm run watch:js\" \"npm run watch:css\"",
     "start": "live-server dist",
     "dev": "concurrently \"npm run watch\" \"npm start\"",
-    "format": "npx prettier --write src/index.html"
+    "format": "npx prettier --write src/index.html",
+    "deploy": "npm run build && gh-pages -d dist -b deploy"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
     "concurrently": "^8.2.2",
+    "gh-pages": "^6.1.1",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.10"
   }
