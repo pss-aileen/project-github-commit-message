@@ -73,5 +73,8 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
   
 #### [Version 1.0.0] 2023/12/03
 
+---
 
+- `npm run dev`: 開発
+- `npm deploy`: deployブランチにアップ→publicフォルダとして生成される
 
