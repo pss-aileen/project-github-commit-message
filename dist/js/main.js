@@ -120,6 +120,20 @@
     practiceProjectPrefixList.push(add);
   }
 
+  const paizaPrefixList = [];
+  CreatepaizaPrefix();
+  function CreatepaizaPrefix() {
+    const c_stdout = new Prefix("標準出力", "Cランク獲得", "取り組んだ問題");
+    const c_stdin = new Prefix("標準入力", "Cランク獲得", "取り組んだ問題");
+    const c_data_structure = new Prefix("データセット選択", "Cランク獲得", "取り組んだ問題");
+    const c_arithmetic_substitution = new Prefix("算術・代入演算", "Cランク獲得", "取り組んだ問題");
+    const c_logical_operation = new Prefix("論理演算", "Cランク獲得", "取り組んだ問題");
+    const c_string_primer = new Prefix("文字列処理", "Cランク獲得", "取り組んだ問題");
+    
+    // 進んだら適宜追加
+    paizaPrefixList.push(c_stdout, c_stdin, c_data_structure, c_arithmetic_substitution, c_logical_operation, c_string_primer);
+  }
+
 
   /************************************************************
     TYPEを取得する
@@ -144,6 +158,10 @@
 
       if (this.value === "practiceProjectPrefixList") {
         return practiceProjectPrefixList;
+      }
+
+      if (this.value === "paizaPrefixList") {
+        return paizaPrefixList;
       }
       
       return "NO ARRAY";
