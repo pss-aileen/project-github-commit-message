@@ -2,6 +2,8 @@
   "prefixTypes": {
     "normal": {
       "id": "0",
+      "icon": "🐢",
+      "displayName": "NORMAL",
       "htmlClassName": "normalPrefixList",
       "prefix": [
         {
@@ -50,6 +52,8 @@
     },
     "TIL": {
       "id": "1",
+      "icon": "📝",
+      "displayName": "DAILY REPORTS",
       "htmlClassName": "TILPrefixList",
       "prefix": [
         {
@@ -64,6 +68,8 @@
     },
     "practice": {
       "id": "2",
+      "icon": "🏄🏻‍♀️",
+      "displayName": "PRACTICE PROJECT",
       "htmlClassName": "practiceProjectPrefixList",
       "prefix": [
         {
@@ -77,6 +83,8 @@
     },
     "paiza": {
       "id": "3",
+      "icon": "📓",
+      "displayName": "PAIZA",
       "htmlClassName": "paizaPrefixList",
       "prefix": [
         {
