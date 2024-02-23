@@ -10,151 +10,71 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .body {
-  @apply font-mono;
-  @apply text-gray-700;
-  @apply transition;
+  @apply font-mono text-gray-700 transition;
 }
 
 .btn-mode {
-  @apply fixed;
-  @apply bottom-3;
-  @apply right-3;
-  @apply text-3xl;
-  @apply cursor-pointer;
-  @apply hover:opacity-70;
-  @apply active:translate-y-0.5;
-  @apply select-none;
-  @apply transition;
+  @apply fixed bottom-3 right-3 text-3xl cursor-pointer hover:opacity-70 active:translate-y-0.5 select-none transition;
 }
 
 .wrapper {
-  @apply mx-auto;
-  @apply mb-10;
-  @apply mt-10;
-  @apply max-w-xl;
-  @apply px-5;
+  @apply mx-auto mb-10 mt-10 max-w-xl px-5;
 }
 
 .site-title {
-  @apply text-3xl;
-  @apply font-bold;
-  @apply text-pink-600;
+  @apply text-3xl font-bold text-pink-600;
 }
 
 .header {
-  @apply flex;
-  @apply items-center;
-  @apply justify-between;
-  @apply gap-4;
+  @apply flex items-center justify-between gap-4;
 }
 
 .btn-reset {
-  @apply block;
-  @apply w-1/4;
-  @apply rounded-md;
-  @apply border-2;
-  @apply border-solid;
-  @apply border-gray-300;
-  @apply bg-gray-100;
-  @apply px-1;
-  @apply py-1;
-  @apply text-lg;
-  @apply tracking-widest;
-  @apply transition;
-  @apply hover:opacity-70;
-  @apply active:translate-y-0.5;
-  @apply select-none;
+  @apply block w-1/4 rounded-md border-2 border-solid border-gray-300 bg-gray-100 px-1 py-1 text-lg tracking-widest transition hover:opacity-70 active:translate-y-0.5 select-none;
 }
 
 .form-wrapper {
   @apply mt-8;
 
   label {
-    @apply mt-5;
-    @apply block;
+    @apply mt-5 block;
   }
 
   .item-title {
-    @apply text-lg;
-    @apply font-bold;
+    @apply text-lg font-bold;
   }
 
   input,
   select {
-    @apply mt-2;
-    @apply block;
-    @apply w-full;
-    @apply rounded-md;
-    @apply border-2;
-    @apply border-solid;
-    @apply px-2;
-    @apply py-1;
+    @apply mt-2 block w-full rounded-md border-2 border-solid px-2 py-1;
   }
 
   .input-textarea {
-    @apply mt-2;
-    @apply block;
-    @apply w-full;
-    @apply resize-none;
-    @apply rounded-md;
-    @apply border-2;
-    @apply border-solid;
-    @apply px-2;
-    @apply py-1;
+    @apply mt-2 block w-full resize-none rounded-md border-2 border-solid px-2 py-1;
   }
 
   .output-textarea {
-    @apply mt-2;
-    @apply block;
-    @apply w-full;
-    @apply resize-none;
-    @apply rounded-md;
-    @apply border-2;
-    @apply border-solid;
-    @apply bg-gray-100;
-    @apply px-2;
-    @apply py-1;
+    @apply mt-2 block w-full resize-none rounded-md border-2 border-solid bg-gray-100 px-2 py-1;
   }
 
   .description {
-    @apply mt-2;
-    @apply text-sm;
-    @apply opacity-60;
+    @apply mt-2 text-sm opacity-60;
   }
 }
 
 .button-wrapper {
-  @apply flex;
-  @apply gap-4;
+  @apply flex gap-4;
 
   .button {
-    @apply mt-5;
-    @apply block;
-    @apply w-full;
-    @apply rounded-md;
-    @apply px-1;
-    @apply py-2;
-    @apply text-lg;
-    @apply tracking-widest;
-    @apply text-neutral-50;
-    @apply shadow-lg;
-    @apply transition;
-    @apply hover:opacity-70;
-    @apply active:translate-y-0.5;
-    @apply active:shadow-md;
-    @apply select-none;
+    @apply mt-5 block w-full rounded-md px-1 py-2 text-lg tracking-widest text-neutral-50 shadow-lg transition hover:opacity-70 active:translate-y-0.5 active:shadow-md select-none;
   }
 
   .button--pink {
-    @apply bg-pink-600;
-    @apply shadow-pink-600/50;
-    @apply active:shadow-pink-600/50;
+    @apply bg-pink-600 shadow-pink-600/50 active:shadow-pink-600/50;
   }
 
   .button--purple {
-    @apply bg-purple-600;
-    @apply shadow-purple-600/50;
-    @apply active:shadow-purple-600/50;
+    @apply bg-purple-600 shadow-purple-600/50 active:shadow-purple-600/50;
   }
 }
 

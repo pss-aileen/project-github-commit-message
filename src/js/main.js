@@ -201,6 +201,34 @@
     }
   }
 
+  class Reset {
+    constructor() {
+    }
+
+    setBlank() {
+      document.getElementById("subject").value = "";
+      document.getElementById("comment").value = "";
+      document.getElementById("issue").value = "";
+      document.getElementById("message-output").value = "🧙🪄";
+    }
+  }
+
+  class Copy {
+    constructor() {
+
+    }
+
+    setClipboard() {
+      const text = document.getElementById("message-output").value;
+      navigator.clipboard.writeText(text);
+      copyBtn.textContent = "CLIPED!";
+      setTimeout(() => {
+        copyBtn.textContent = "COPY";
+      },
+        1000);
+    }
+  }
+
   const url = "./data/data.json";
   const jsonData = new JsonData(url);
   
@@ -242,5 +270,23 @@
     commitMessage.setPrefix();
     commitMessage.setMessage();
   });
+
+  const btnReset = document.getElementById("btn-reset");
+
+  btnReset.addEventListener("click", (e) => {
+    (e).preventDefault();
+    const reset = new Reset();
+    reset.setBlank();
+  });
+
+  const copyBtn = document.getElementById("btn-copy");
+
+  copyBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const copy = new Copy();
+    copy.setClipboard();
+  });
+
+
 
 } // end
