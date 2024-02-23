@@ -1,0 +1,141 @@
+{
+  "prefixTypes": {
+    "normal": {
+      "id": "0",
+      "htmlClassName": "normalPrefixList",
+      "prefix": [
+        {
+          "id": "0",
+          "constant": "feature",
+          "prefixIcon": "💕",
+          "prefixText": "FEAT",
+          "description": "メソッド、条件分岐、改良、ファイル追加した時"
+        },
+        {
+          "id": "1",
+          "constant": "refactor",
+          "prefixIcon": "🫶",
+          "prefixText": "REFACTOR",
+          "description": "機能を変えずにコードを書き換えた時"
+        },
+        {
+          "id": "2",
+          "constant": "docs",
+          "prefixIcon": "📝",
+          "prefixText": "DOCS",
+          "description": "コードに関係ない、影響がない時"
+        },
+        {
+          "id": "3",
+          "constant": "fix",
+          "prefixIcon": "🐝",
+          "prefixText": "FIX",
+          "description": "不具合の修正"
+        },
+        {
+          "id": "4",
+          "constant": "release",
+          "prefixIcon": "🚀",
+          "prefixText": "RELEASE",
+          "description": "Version 1.0.0"
+        },
+        {
+          "id": "5",
+          "constant": "newProject",
+          "prefixIcon": "🎉",
+          "prefixText": "NEW",
+          "description": "BEGIN NEW PROJECT"
+        }
+      ]
+    },
+    "TIL": {
+      "id": "1",
+      "htmlClassName": "TILPrefixList",
+      "prefix": [
+        {
+          "id": "0",
+          "constant": "update",
+          "prefixIcon": "📚",
+          "prefixText": "UPDATE",
+          "description": "DAILY REPORT 231201",
+          "option": "tilDateSet"
+        }
+      ]
+    },
+    "practice": {
+      "id": "2",
+      "htmlClassName": "practiceProjectPrefixList",
+      "prefix": [
+        {
+          "id": "0",
+          "constant": "add",
+          "prefixIcon": "📖",
+          "prefixText": "ADD",
+          "description": "ファイル、学んだことの追加"
+        }
+      ]
+    },
+    "paiza": {
+      "id": "3",
+      "htmlClassName": "paizaPrefixList",
+      "prefix": [
+        {
+          "id": "0",
+          "constant": "",
+          "prefixIcon": "Cランク獲得",
+          "prefixText": "文字列処理",
+          "description": "取り組んだ問題"
+        },
+        {
+          "id": "1",
+          "constant": "",
+          "prefixIcon": "Cランク獲得",
+          "prefixText": "配列メニュー",
+          "description": "取り組んだ問題"
+        },
+        {
+          "id": "2",
+          "constant": "",
+          "prefixIcon": "Cランク獲得",
+          "prefixText": "配列活用メニュー",
+          "description": "取り組んだ問題"
+        },
+        {
+          "id": "3",
+          "constant": "",
+          "prefixIcon": "Cランク獲得",
+          "prefixText": "条件分岐メニュー",
+          "description": "取り組んだ問題"
+        },
+        {
+          "id": "4",
+          "constant": "",
+          "prefixIcon": "Cランク獲得",
+          "prefixText": "ループメニュー1",
+          "description": "取り組んだ問題"
+        },
+        {
+          "id": "5",
+          "constant": "",
+          "prefixIcon": "Cランク獲得",
+          "prefixText": "ループメニュー2",
+          "description": "取り組んだ問題"
+        },
+        {
+          "id": "6",
+          "constant": "",
+          "prefixIcon": "Cランク獲得",
+          "prefixText": "二重ループメニュー",
+          "description": "取り組んだ問題"
+        },
+        {
+          "id": "7",
+          "constant": "",
+          "prefixIcon": "Cランク獲得",
+          "prefixText": "Cランクレベルアップメニュー",
+          "description": "取り組んだ問題"
+        }
+      ]
+    }
+  }
+}

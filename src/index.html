@@ -9,24 +9,19 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class="font-mono text-gray-700 transition">
+<body class="body">
 
-  <div
-    class="fixed bottom-3 right-3 text-3xl cursor-pointer hover:opacity-70 active:translate-y-0.5 select-none transition"
-    id="btn-mode">
+  <div class="btn-mode" id="btn-mode">
     🌞
   </div>
 
-  <div id="wrapper" class="mx-auto mb-10 mt-10 max-w-xl px-5">
-    <div class="flex items-center justify-between gap-4">
-      <h1 class="text-3xl font-bold text-pink-600">Commit Easily</h1>
-
-      <button
-        class="block w-1/4 rounded-md border-2 border-solid border-gray-300 bg-gray-100 px-1 py-1 text-lg tracking-widest transition hover:opacity-70 active:translate-y-0.5 select-none"
-        id="btn-reset">
+  <div id="wrapper" class="wrapper">
+    <header class="header">
+      <h1 class="site-title">Commit Easily</h1>
+      <button class="btn-reset" id="btn-reset">
         RESET
       </button>
-    </div>
+    </header>
 
     <section class="mt-8">
       <form name="commitForm">

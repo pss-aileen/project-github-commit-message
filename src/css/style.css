@@ -8,3 +8,60 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.body {
+  @apply font-mono;
+  @apply text-gray-700;
+  @apply transition;
+}
+
+.btn-mode {
+  @apply fixed;
+  @apply bottom-3;
+  @apply right-3;
+  @apply text-3xl;
+  @apply cursor-pointer;
+  @apply hover:opacity-70;
+  @apply active:translate-y-0.5;
+  @apply select-none;
+  @apply transition;
+}
+
+.wrapper {
+  @apply mx-auto;
+  @apply mb-10;
+  @apply mt-10;
+  @apply max-w-xl;
+  @apply px-5;
+}
+
+.site-title {
+  @apply text-3xl;
+  @apply font-bold;
+  @apply text-pink-600;
+}
+
+.header {
+  @apply flex;
+  @apply items-center;
+  @apply justify-between;
+  @apply gap-4;
+}
+
+.btn-reset {
+  @apply block;
+  @apply w-1/4;
+  @apply rounded-md;
+  @apply border-2;
+  @apply border-solid;
+  @apply border-gray-300;
+  @apply bg-gray-100;
+  @apply px-1;
+  @apply py-1;
+  @apply text-lg;
+  @apply tracking-widest;
+  @apply transition;
+  @apply hover:opacity-70;
+  @apply active:translate-y-0.5;
+  @apply select-none;
+}
