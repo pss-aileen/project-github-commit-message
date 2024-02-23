@@ -93,31 +93,40 @@
   }
 
 
-  class SetOptionSubject {
-    constructor(optionName) {
-      this.optionName = optionName;
+  class SetSpecificSubject {
+    constructor(prefixValue) {
+      this.prefixValue = prefixValue;
       this.subjectDOM = document.getElementById("subject");
     }
 
-    getOptionName() {
-      return this.optionName;
+    getprefixValue() {
+      return this.prefixValue;
     }
 
     checkType() {
-      // if (this.optionName === "til-update") {
-      //   console.log("update");
-      //   this.tilUpdate();
-      // }
-      const tilUpdate = this.optionName === "til-update" ? this.tilUpdate() : "";
-      console.log(this.optionName);
+      console.log(this.prefixValue);
+      const setTilUpdate = this.prefixValue === "til-update" ? this.setText(this.tilUpdate()) : "";
+      const normalNewProject = this.prefixValue === "normal-newProject" ? this.setText(this.normalNewProject()) : "";
+      const normalNew = this.prefixValue === "normal-release" ? this.setText(this.normalRelease()) : "";
+    }
+
+    setText(text) {
+      this.subjectDOM.value = text;
     }
 
     tilUpdate() {
       const day = new Date();
-      this.subjectDOM.value = `DAILY REPORT ${day.getFullYear() - 2000}${String(day.getMonth() + 1).padStart(2, "0")}${String(day.getDate()).padStart(2, "0")}`;
+      const text = `DAILY REPORT ${day.getFullYear() - 2000}${String(day.getMonth() + 1).padStart(2, "0")}${String(day.getDate()).padStart(2, "0")}`;
+      return text;
     }
 
+    normalNewProject() {
+      return "BEGIN NEW PROJECT";
+    }
 
+    normalRelease() {
+      return "Version";
+    }
   }
 
   class CommitMessage {
@@ -134,8 +143,8 @@
     const createDom = new CreateHTMLDOM(data);
     createDom.createTypeOptions();
     createDom.createPrefix();
-    const setOptionSubject = new SetOptionSubject(prefixDom.value);
-    setOptionSubject.checkType();
+    const setSpecificSubject = new SetSpecificSubject(prefixDom.value);
+    setSpecificSubject.checkType();
   }
 
   initialize();
@@ -146,16 +155,16 @@
     const data = await jsonData.getAllData();
     const createDom = new CreateHTMLDOM(data);
     createDom.createPrefix();
-    const setOptionSubject = new SetOptionSubject(prefixDom.value);
-    setOptionSubject.checkType();
+    const setSpecificSubject = new SetSpecificSubject(prefixDom.value);
+    setSpecificSubject.checkType();
   });
 
   const prefixDom = document.getElementById("prefix");
 
   prefixDom.addEventListener("change", () => {
     const prefixDom = document.getElementById("prefix");
-    const setOptionSubject = new SetOptionSubject(prefixDom.value);
-    setOptionSubject.checkType();
+    const setSpecificSubject = new SetSpecificSubject(prefixDom.value);
+    setSpecificSubject.checkType();
   });
 
 } // end
