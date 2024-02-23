@@ -65,3 +65,107 @@ input[type="number"]::-webkit-inner-spin-button {
   @apply active:translate-y-0.5;
   @apply select-none;
 }
+
+.form-wrapper {
+  @apply mt-8;
+
+  label {
+    @apply mt-5;
+    @apply block;
+  }
+
+  .item-title {
+    @apply text-lg;
+    @apply font-bold;
+  }
+
+  input,
+  select {
+    @apply mt-2;
+    @apply block;
+    @apply w-full;
+    @apply rounded-md;
+    @apply border-2;
+    @apply border-solid;
+    @apply px-2;
+    @apply py-1;
+  }
+
+  .input-textarea {
+    @apply mt-2;
+    @apply block;
+    @apply w-full;
+    @apply resize-none;
+    @apply rounded-md;
+    @apply border-2;
+    @apply border-solid;
+    @apply px-2;
+    @apply py-1;
+  }
+
+  .output-textarea {
+    @apply mt-2;
+    @apply block;
+    @apply w-full;
+    @apply resize-none;
+    @apply rounded-md;
+    @apply border-2;
+    @apply border-solid;
+    @apply bg-gray-100;
+    @apply px-2;
+    @apply py-1;
+  }
+
+  .description {
+    @apply mt-2;
+    @apply text-sm;
+    @apply opacity-60;
+  }
+}
+
+.button-wrapper {
+  @apply flex;
+  @apply gap-4;
+
+  .button {
+    @apply mt-5;
+    @apply block;
+    @apply w-full;
+    @apply rounded-md;
+    @apply px-1;
+    @apply py-2;
+    @apply text-lg;
+    @apply tracking-widest;
+    @apply text-neutral-50;
+    @apply shadow-lg;
+    @apply transition;
+    @apply hover:opacity-70;
+    @apply active:translate-y-0.5;
+    @apply active:shadow-md;
+    @apply select-none;
+  }
+
+  .button--pink {
+    @apply bg-pink-600;
+    @apply shadow-pink-600/50;
+    @apply active:shadow-pink-600/50;
+  }
+
+  .button--purple {
+    @apply bg-purple-600;
+    @apply shadow-purple-600/50;
+    @apply active:shadow-purple-600/50;
+  }
+}
+
+.footer {
+  @apply mt-8;
+
+  .copyright {
+    @apply text-sm;
+  }
+
+  a {
+    @apply text-pink-700;
+  }
+}
