@@ -65,6 +65,7 @@
     }
 
     createPrefix() {
+      this.clearCurrentPrefix();
       const prefixDOM = document.getElementById("prefix");
       const typeDOM = document.getElementById("type");
       const typeNumber = typeDOM.value;
@@ -82,6 +83,20 @@
           prefixDOM.appendChild(option);
         }
     }
+
+    clearCurrentPrefix() {
+      const prefixDOM = document.getElementById("prefix");
+      while (prefixDOM.firstChild) {
+        prefixDOM.removeChild(prefixDOM.firstChild);
+      }
+    }
+  }
+
+  
+  class setOptionSubject {
+    constructor() {
+      
+    }
   }
 
   class CommitMessage {
@@ -89,8 +104,6 @@
 
     }
   }
-
-
 
   const url = "./data/data.json";
   const jsonData = new JsonData(url);
@@ -107,7 +120,8 @@
   const typeDom = document.getElementById("type");
 
   typeDom.addEventListener("change", async () => {
-    console.log(typeDom.value);
+    const data = await jsonData.getAllData();
+    const createDom = new CreateHTMLDOM(data);
     createDom.createPrefix();
   });
 
