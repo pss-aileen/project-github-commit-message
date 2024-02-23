@@ -1,10 +1,12 @@
 'use strict';
 {
+  const url = "./data/data.json";
 
   class JsonData {
     constructor(url) {
       this.url = url;
       this.data = null;
+      this.dataPromise = null;
     }
 
     async loadData() {
@@ -20,38 +22,23 @@
       }
     }
 
-    
-  }
-  
-  const fetchData = async () => {
-    const res = await fetch("./data/data.json")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("NG");
-        }
-        return response.json();
-      })
-      .catch(error => {
-        console.error("no data");
-        return "no data";
-      })
-  };
+    getPrefixType() {
+      if (this.data) {
+        console.log("Processing data:", this.data);
+      } else {
+        console.log("Data is not loaded yey");
+      }
+    }
 
-  const fetchData2 = async () => {
-    return new Promise((resolve, reject) => {
-      fetch("./data/data.json")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("NG");
-        }
-        resolve(response.json());
-      })
-      .catch(error => {
-        console.error("no data");
-        reject("no data");
-      })
-    });
   }
+
+
+
+  const jsonData = new JsonData(url);
+
+  jsonData.loadData().then(() => {
+    jsonData.getPrefixType();
+  });
 
 
   const getPrifixType = async() => {
@@ -61,7 +48,7 @@
     });
     console.log(eachPrefix);
   };
-  getPrifixType();
+  // getPrifixType();
 
 
 
