@@ -55,7 +55,7 @@
       for (let i = 0; i < this.data.length; i++) {
         const { displayName, icon, htmlClassName, prefixType, id } = this.data[i];
         const option = document.createElement("option");
-        option.value = id;
+        option.value = prefixType;
         option.textContent = icon + " " + displayName;
         if (i === 0) {
           option.selected = true;
@@ -68,20 +68,20 @@
       this.clearCurrentPrefix();
       const prefixDOM = document.getElementById("prefix");
       const typeDOM = document.getElementById("type");
-      const typeNumber = typeDOM.value;
+      const typeNumber = typeDOM.selectedIndex;
       const prefixData = this.data[typeNumber].prefix;
       console.log(prefixData);
 
       for (let i = 0; i < prefixData.length; i++) {
-          const { id, prefixIcon, prefixText, description } = prefixData[i];
-          const option = document.createElement("option");
-          option.value = id;
-          option.textContent = `${prefixIcon} ${prefixText}: ${description}`;
-          if (i === 0) {
-            option.selected = true;
-          }
-          prefixDOM.appendChild(option);
+        const { id, prefixIcon, prefixText, description, constant } = prefixData[i];
+        const option = document.createElement("option");
+        option.value = `${typeDOM.value}-${constant}`;
+        option.textContent = `${prefixIcon} ${prefixText}: ${description}`;
+        if (i === 0) {
+          option.selected = true;
         }
+        prefixDOM.appendChild(option);
+      }
     }
 
     clearCurrentPrefix() {
@@ -92,11 +92,32 @@
     }
   }
 
-  
-  class setOptionSubject {
-    constructor() {
-      
+
+  class SetOptionSubject {
+    constructor(optionName) {
+      this.optionName = optionName;
+      this.subjectDOM = document.getElementById("subject");
     }
+
+    getOptionName() {
+      return this.optionName;
+    }
+
+    checkType() {
+      // if (this.optionName === "til-update") {
+      //   console.log("update");
+      //   this.tilUpdate();
+      // }
+      const tilUpdate = this.optionName === "til-update" ? this.tilUpdate() : "";
+      console.log(this.optionName);
+    }
+
+    tilUpdate() {
+      const day = new Date();
+      this.subjectDOM.value = `DAILY REPORT ${day.getFullYear() - 2000}${String(day.getMonth() + 1).padStart(2, "0")}${String(day.getDate()).padStart(2, "0")}`;
+    }
+
+
   }
 
   class CommitMessage {
@@ -113,6 +134,8 @@
     const createDom = new CreateHTMLDOM(data);
     createDom.createTypeOptions();
     createDom.createPrefix();
+    const setOptionSubject = new SetOptionSubject(prefixDom.value);
+    setOptionSubject.checkType();
   }
 
   initialize();
@@ -123,6 +146,16 @@
     const data = await jsonData.getAllData();
     const createDom = new CreateHTMLDOM(data);
     createDom.createPrefix();
+    const setOptionSubject = new SetOptionSubject(prefixDom.value);
+    setOptionSubject.checkType();
+  });
+
+  const prefixDom = document.getElementById("prefix");
+
+  prefixDom.addEventListener("change", () => {
+    const prefixDom = document.getElementById("prefix");
+    const setOptionSubject = new SetOptionSubject(prefixDom.value);
+    setOptionSubject.checkType();
   });
 
 } // end
