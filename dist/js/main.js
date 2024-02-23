@@ -75,7 +75,7 @@
       for (let i = 0; i < prefixData.length; i++) {
         const { id, prefixIcon, prefixText, description, constant } = prefixData[i];
         const option = document.createElement("option");
-        option.value = `${typeDOM.value}-${constant}`;
+        option.value = constant;
         option.textContent = `${prefixIcon} ${prefixText}: ${description}`;
         if (i === 0) {
           option.selected = true;
@@ -130,8 +130,74 @@
   }
 
   class CommitMessage {
-    constructor() {
+    constructor(data) {
+      this.type = document.getElementById("type").value;
+      this.prefix = document.getElementById("prefix").value;
+      this.subject = document.getElementById("subject").value;
+      this.comment = document.getElementById("comment").value;
+      this.issue = document.getElementById("issue").value;
+      this.prefixIcon = null;
+      this.prefixName = null;
+      this.data = data;
+      this.messageOutput = document.getElementById("message-output");
+    }
 
+    setPrefix() {
+      
+      console.log(this.type, this.prefix, this.data);
+      for (let i = 0; i < this.data.length; i++) {
+        for (let j = 0; j < this.data[i].prefix.length; j++) {
+          if (this.prefix === this.data[i].prefix[j].constant) {
+            this.prefixIcon = this.data[i].prefix[j].prefixIcon;
+            this.prefixName = this.data[i].prefix[j].prefixText;
+          }
+
+        }
+      }
+
+    }
+
+    setMessage() {
+      this.messageOutput.value = this.getMessage();
+    }
+
+    getMessage() {
+      let message = "";
+
+      message = message + this.getCommitStartSentence();
+
+      const WITH_NOTHING = !this.issue && !this.comment;
+      const WITH_ISSUE = this.issue && !this.comment;
+      const WITH_COMMENT = !this.issue && this.comment;
+      const WITH_ISSUE_AND_COMMENT = this.issue && this.comment;
+
+      if (WITH_NOTHING) {
+        message = message + this.getCommitFirstLine();
+      } else if (WITH_ISSUE) {
+        message = message + this.getCommitFirstLineWithIssue();
+      } else if (WITH_COMMENT) {
+        message = message + this.getCommitFirstLine() + this.getCommitSecondLine();
+      } else if (WITH_ISSUE_AND_COMMENT) {
+        message = message + this.getCommitFirstLineWithIssue() + this.getCommitSecondLine();
+      }
+
+      return message;
+    }
+
+    getCommitStartSentence() {
+      return "git commit"
+    }
+
+    getCommitFirstLine() {
+      return ` -m "${this.prefixIcon} ${this.prefixName}: ${this.subject}"`;
+    }
+
+    getCommitFirstLineWithIssue() {
+      return ` -m "${this.prefixIcon} ${this.prefixName}: ${this.subject} (#${this.issue})"`;
+    }
+
+    getCommitSecondLine() {
+      return ` -m "${this.comment}"`;
     }
   }
 
@@ -165,6 +231,16 @@
     const prefixDom = document.getElementById("prefix");
     const setSpecificSubject = new SetSpecificSubject(prefixDom.value);
     setSpecificSubject.checkType();
+  });
+
+  const btnGenerate = document.getElementById("btn-generate");
+
+  btnGenerate.addEventListener("click", async(e) => {
+    e.preventDefault();
+    const data = await jsonData.getAllData();
+    const commitMessage = new CommitMessage(data);
+    commitMessage.setPrefix();
+    commitMessage.setMessage();
   });
 
 } // end
