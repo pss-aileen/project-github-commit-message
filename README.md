@@ -2,8 +2,7 @@
 
 # Commit Easily 
 Commit Easilyはコミットメッセージを簡単に何も考えずに作成できるWebアプリです。
-
-[Version 2.0.0]からforkして、ご自身に合ったprefixを簡単に作成することができます。
+[Version 3.0.0]からforkして、ご自身に合ったprefixを簡単に作成することができます。
 
 
 ## 概要
@@ -33,7 +32,8 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
 - HTML/CSS
 - JavaScript
 - Tailwind CSS
-
+- その他
+  - jsonにprefixを保管し、オブジェクト指向をでプログラムを書きました（Version 3から）
 
 ## 制作について
 - 制作期間
@@ -42,36 +42,49 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
   - 気分が上がるように可愛いアイコンを使ってデザインをまとめました
 
 ---
-#### [Version 2.0.5] 2024/01/03
-- 新機能
-  - ダークモードに対応
-- 修正
-  - RELEASE、NEWの時、SUBJECTを自動的に出力
 
-#### [Version 2.0.4] 2024/01/01
-- 修正
-  - UPDATEの日付を2411→240101になるよう変更
+## Release
 
-#### [Version 2.0.3] 2023/12/23
-- 修正
-  - UPDATEの自動日付を20231223から231223になるように変更
+<details>
 
-#### [Version 2.0.2] 2023/12/22
-- 新機能
-  - prefixでUPDATEを選んだ時、日付が自動でSUBJECTに入るようにした
+<summary>show detail</summary>
 
-#### [Version 2.0.1] 2023/12/17
-- 新機能
-  - リセットボタン: 自分のインターネット回線が遅くでリロードして書いた内容を消していると面倒だったので、リセットボタンを作成
+- **[Version 3.0.0] 2024/02/24**
+  - 内部構造作り替え
+    - オブジェクト指向でプログラムを組み直し
+    - prefixの情報をjsonで管理するように変更
+- **[Version 2.0.7] 2024/01/30**
+  - 修正
+    - 選択肢にアイコン追加
+    - PAIZAの選択肢の順番変更
+- **[Version 2.0.6]**
+  - skip
+- **[Version 2.0.5] 2024/01/03**
+  - 新機能
+    - ダークモードに対応
+  - 修正
+    - RELEASE、NEWの時、SUBJECTを自動的に出力
+- **[Version 2.0.4] 2024/01/01**
+  - 修正
+    - UPDATEの日付を2411→240101になるよう変更
+- **[Version 2.0.3] 2023/12/23**
+  - 修正
+    - UPDATEの自動日付を20231223から231223になるように変更
+- **[Version 2.0.2] 2023/12/22**
+  - 新機能
+    - prefixでUPDATEを選んだ時、日付が自動でSUBJECTに入るようにした
+- **[Version 2.0.1] 2023/12/17**
+  - 新機能
+    - リセットボタン: 自分のインターネット回線が遅くでリロードして書いた内容を消していると面倒だったので、リセットボタンを作成
   - practice-project用のprefixの追加
+- **[Version 2.0.0] 2023/12/13**
+  - 新機能
+    - プロジェクトごとにprefixを切り替えられる機能を追加
+  - 修正
+    - prefixが複数選択できる問題を解決（HTMLのSelectからmultipleを削除）
+- **[Version 1.0.0] 2023/12/03**
 
-#### [Version 2.0.0] 2023/12/13
-- 新機能
-  - プロジェクトごとにprefixを切り替えられる機能を追加
-- 修正
-  - prefixが複数選択できる問題を解決（HTMLのSelectからmultipleを削除）
-  
-#### [Version 1.0.0] 2023/12/03
+</details>
 
 ---
 

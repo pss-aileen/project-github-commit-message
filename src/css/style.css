@@ -13,6 +13,10 @@ input[type="number"]::-webkit-inner-spin-button {
   @apply font-mono text-gray-700 transition;
 }
 
+.body.darkmode {
+  @apply text-gray-300 bg-slate-900;
+}
+
 .btn-mode {
   @apply fixed bottom-3 right-3 text-3xl cursor-pointer hover:opacity-70 active:translate-y-0.5 select-none transition;
 }
@@ -31,6 +35,10 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .btn-reset {
   @apply block w-1/4 rounded-md border-2 border-solid border-gray-300 bg-gray-100 px-1 py-1 text-lg tracking-widest transition hover:opacity-70 active:translate-y-0.5 select-none;
+}
+
+.btn-reset.darkmode {
+  @apply bg-slate-800 border-slate-600;
 }
 
 .form-wrapper {
@@ -53,8 +61,18 @@ input[type="number"]::-webkit-inner-spin-button {
     @apply mt-2 block w-full resize-none rounded-md border-2 border-solid px-2 py-1;
   }
 
+  input.darkmode,
+  select.darkmode,
+  .input-textarea.darkmode {
+    @apply border-slate-600 bg-slate-800;
+  }
+
   .output-textarea {
     @apply mt-2 block w-full resize-none rounded-md border-2 border-solid bg-gray-100 px-2 py-1;
+  }
+
+  .output-textarea.darkmode {
+    @apply border-slate-600 bg-slate-700;
   }
 
   .description {

@@ -1,6 +1,10 @@
 'use strict';
 {
 
+  /*
+    TYPEとPREFIXを追加したい場合はdata/data.jsonを追加すること
+  */
+
   class JsonData {
     constructor(url) {
       this.url = url;
@@ -229,6 +233,107 @@
     }
   }
 
+
+
+  class DarkMode {
+    constructor() {
+
+    }
+
+    getDOMElements() {
+      const body = document.getElementById("body");
+      const resetBtn = document.getElementById("btn-reset");
+      const input = document.querySelectorAll("input");
+      const select = document.querySelectorAll("select");
+      const comment = document.getElementById("comment");
+      const generatedMessage = document.getElementById("message-output");
+      const modeBtn = document.getElementById("btn-mode");
+      const elements = [body, resetBtn, input, select, comment, generatedMessage];
+      return { elements, modeBtn };
+    }
+
+    getLocalStorage() {
+      const monitorMode = JSON.parse(localStorage.getItem("displayMode"));
+      return monitorMode;
+    }
+
+    setLocalStorageLightMode() {
+      localStorage.setItem("displayMode", JSON.stringify("lightmode"));
+    }
+    
+    setLocalStorageDarkMode() {
+      localStorage.setItem("displayMode", JSON.stringify("darkmode"));
+    }
+
+    judgeInitMode() {
+      const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const monitorMode = this.getLocalStorage();
+
+      if (darkModeMediaQuery.matches) {
+        console.log("judge: system dark");
+        this.switchToDarkMode();
+      } else if (!darkModeMediaQuery.matches) {
+        console.log("judge: system light");
+        this.switchToLightMode();
+      } else if (monitorMode === "darkmode") {
+        console.log("localStorage DARK");
+        this.switchToDarkMode();
+      } else {
+        console.log("localStorage LIGHT");
+        this.switchToLightMode();
+      }
+    }
+
+    judgeEvent() {
+      const { modeBtn } = this.getDOMElements();
+      if (modeBtn.textContent === "🌞") {
+        this.switchToDarkMode();
+      } else {
+        this.switchToLightMode();
+      }
+
+    }
+  
+    switchToDarkMode() {
+      const {elements, modeBtn} = this.getDOMElements();
+      this.setLocalStorageDarkMode();
+
+      modeBtn.textContent = "🌛";
+
+      for (let i = 0; i < elements.length; i++) {
+        if (elements[i].length > 0) {
+          for (const element of elements[i]) {
+            element.classList.add("darkmode");
+          }
+        } else {
+          elements[i].classList.add("darkmode");
+        }
+      }
+    }
+
+    switchToLightMode() {
+      const {elements, modeBtn} = this.getDOMElements();
+      this.setLocalStorageLightMode();
+
+      modeBtn.textContent = "🌞";
+
+      for (let i = 0; i < elements.length; i++) {
+        if (elements[i].length > 0) {
+          for (const element of elements[i]) {
+            element.classList.remove("darkmode");
+          }
+        } else {
+          elements[i].classList.remove("darkmode");
+        }
+      }
+    }
+  }
+
+
+  /*************************************************
+  *************************************************/
+
+
   const url = "./data/data.json";
   const jsonData = new JsonData(url);
   
@@ -239,6 +344,8 @@
     createDom.createPrefix();
     const setSpecificSubject = new SetSpecificSubject(prefixDom.value);
     setSpecificSubject.checkType();
+    const darkmode = new DarkMode();
+    darkmode.judgeInitMode();
   }
 
   initialize();
@@ -287,6 +394,11 @@
     copy.setClipboard();
   });
 
+  const modeBtn = document.getElementById("btn-mode");
 
+  modeBtn.addEventListener("click", () => {
+    const darkmode = new DarkMode();
+    darkmode.judgeEvent();
+  });
 
 } // end
