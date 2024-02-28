@@ -71,15 +71,15 @@
     "id": "2",
     "prefixType": "practice",
     "icon": "🏄🏻‍♀️",
-    "displayName": "PRACTICE PROJECT",
+    "displayName": "PRACTICE PROJECT (React, Three.js)",
     "htmlClassName": "practiceProjectPrefixList",
     "prefix": [
       {
         "id": "0",
-        "constant": "practice-add",
+        "constant": "practice-learn",
         "prefixIcon": "📖",
-        "prefixText": "ADD",
-        "description": "ファイル、学んだことの追加"
+        "prefixText": "LEARN",
+        "description": "学んだ物の名前、講座名、概要・まとめはコメントにでも"
       }
     ]
   },
