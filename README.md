@@ -49,6 +49,10 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
 
 <summary>show detail</summary>
 
+- **[Version 3.0.1] 2024/03/10**
+  - 修正
+    - TYPE PRACTICE PROJECT に WATCH を追加
+      - Udemy講座を視聴して、見た動画ごとにコミットする場合のprefix
 - **[Version 3.0.0] 2024/02/24**
   - 内部構造作り替え
     - オブジェクト指向でプログラムを組み直し
@@ -89,5 +93,5 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
 ---
 
 - `npm run dev`: 開発
-- `npm deploy`: deployブランチにアップ→publicフォルダとして生成される
+- `npm run deploy`: deployブランチにアップ→publicフォルダとして生成される
 
