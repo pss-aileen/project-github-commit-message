@@ -80,6 +80,13 @@
         "prefixIcon": "📖",
         "prefixText": "LEARN",
         "description": "学んだ物の名前、講座名、概要・まとめはコメントにでも"
+      },
+      {
+        "id": "1",
+        "constant": "practice-video",
+        "prefixIcon": "🎥",
+        "prefixText": "WATCH",
+        "description": "1. 動画タイトル(Udemyコピペ) コメントに学んだ内容まとめ"
       }
     ]
   },
