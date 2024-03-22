@@ -11,14 +11,14 @@
         "constant": "normal-feature",
         "prefixIcon": "💕",
         "prefixText": "FEAT",
-        "description": "メソッド、条件分岐、改良、ファイル追加した時"
+        "description": "新機能の追加"
       },
       {
         "id": "1",
-        "constant": "normal-refactor",
-        "prefixIcon": "🫶",
-        "prefixText": "REFACTOR",
-        "description": "機能を変えずにコードを書き換えた時"
+        "constant": "normal-fix",
+        "prefixIcon": "🐝",
+        "prefixText": "FIX",
+        "description": "不具合の修正"
       },
       {
         "id": "2",
@@ -29,24 +29,24 @@
       },
       {
         "id": "3",
-        "constant": "normal-fix",
-        "prefixIcon": "🐝",
-        "prefixText": "FIX",
-        "description": "不具合の修正"
+        "constant": "normal-style",
+        "prefixIcon": "🎨",
+        "prefixText": "STYLE",
+        "description": "スタイルの変更"
       },
       {
         "id": "4",
-        "constant": "normal-release",
-        "prefixIcon": "🚀",
-        "prefixText": "RELEASE",
-        "description": "Version 1.0.0"
+        "constant": "normal-chore",
+        "prefixIcon": "🔧",
+        "prefixText": "CHORE",
+        "description": "その他なんでも"
       },
       {
         "id": "5",
-        "constant": "normal-newProject",
-        "prefixIcon": "🎉",
-        "prefixText": "NEW",
-        "description": "BEGIN NEW PROJECT"
+        "constant": "normal-release",
+        "prefixIcon": "🚀",
+        "prefixText": "RELEASE",
+        "description": "VERSION 1.0.0"
       }
     ]
   },
