@@ -49,6 +49,9 @@ URL: https://pss-aileen.github.io/project-github-commit-message/
 
 <summary>show detail</summary>
 
+- **[Version 3.0.2] 2024/03/23**
+  - 修正
+    - NORMAL の PREFIX を変更
 - **[Version 3.0.1] 2024/03/10**
   - 修正
     - TYPE PRACTICE PROJECT に WATCH を追加
