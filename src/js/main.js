@@ -120,7 +120,7 @@
 
     tilUpdate() {
       const day = new Date();
-      const text = `DAILY REPORT ${day.getFullYear() - 2000}${String(day.getMonth() + 1).padStart(2, "0")}${String(day.getDate()).padStart(2, "0")}`;
+      const text = `daily report ${day.getFullYear() - 2000}${String(day.getMonth() + 1).padStart(2, "0")}${String(day.getDate()).padStart(2, "0")}`;
       return text;
     }
 
