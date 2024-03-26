@@ -197,7 +197,7 @@
     }
 
     getCommitFirstLineWithIssue() {
-      return ` -m "${this.prefixIcon} ${this.prefixName}: ${this.subject} (#${this.issue})"`;
+      return ` -m "${this.prefixIcon} ${this.prefixName}: ${this.subject} #${this.issue}"`;
     }
 
     getCommitSecondLine() {

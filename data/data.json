@@ -175,5 +175,49 @@
         "description": "取り組んだ問題"
       }
     ]
+  },
+  {
+    "id": "4",
+    "prefixType": "first-contributions-ja",
+    "icon": "🤝",
+    "displayName": "First Contributions JA",
+    "htmlClassName": "firstContributionsJAPrefixList",
+    "prefix": [
+      {
+        "id": "0",
+        "constant": "fcj-feat",
+        "prefixIcon": "✨",
+        "prefixText": "feat",
+        "description": "新機能追加関連"
+      },
+      {
+        "id": "1",
+        "constant": "fcj-docs",
+        "prefixIcon": "📚",
+        "prefixText": "docs",
+        "description": "ドキュメントの追加・修正・削除"
+      },
+      {
+        "id": "2",
+        "constant": "fcj-fix",
+        "prefixIcon": "🐛",
+        "prefixText": "fix",
+        "description": "機能やバグに関する修正"
+      },
+      {
+        "id": "3",
+        "constant": "fcj-style",
+        "prefixIcon": "🎨",
+        "prefixText": "style",
+        "description": "スタイル関連"
+      },
+      {
+        "id": "4",
+        "constant": "fcj-chore",
+        "prefixIcon": "🔧",
+        "prefixText": "chore",
+        "description": "雑事、カテゴライズする必要のないもの"
+      }
+    ]
   }
 ]
