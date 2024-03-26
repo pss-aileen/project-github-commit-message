@@ -2,51 +2,72 @@
   {
     "id": "0",
     "prefixType": "normal",
-    "icon": "🐢",
-    "displayName": "NORMAL",
+    "icon": "🌞",
+    "displayName": "normal",
     "htmlClassName": "normalPrefixList",
     "prefix": [
       {
         "id": "0",
         "constant": "normal-feature",
         "prefixIcon": "💕",
-        "prefixText": "FEAT",
-        "description": "新機能の追加"
+        "prefixText": "feat",
+        "description": "新機能の実装(TOP実装、CSS実装、大規模な修正・変更)"
       },
       {
         "id": "1",
-        "constant": "normal-fix",
-        "prefixIcon": "🐝",
-        "prefixText": "FIX",
-        "description": "不具合の修正"
+        "constant": "normal-improve",
+        "prefixIcon": "🦄",
+        "prefixText": "improve",
+        "description": "リファクタリング、コード構造の変更、デザインのアップデート"
       },
       {
         "id": "2",
-        "constant": "normal-docs",
-        "prefixIcon": "📝",
-        "prefixText": "DOCS",
-        "description": "コードに関係ない、影響がない時"
+        "constant": "normal-bugfix",
+        "prefixIcon": "🐝",
+        "prefixText": "bugFix",
+        "description": "エラー文解決、画面がおかしいなどの不具合修正"
       },
       {
         "id": "3",
-        "constant": "normal-style",
-        "prefixIcon": "🎨",
-        "prefixText": "STYLE",
-        "description": "スタイルの変更"
+        "constant": "normal-fix",
+        "prefixIcon": "🛠️",
+        "prefixText": "fix",
+        "description": "誤字脱字、その他bugでないものの修正、テキストの変更"
       },
       {
         "id": "4",
-        "constant": "normal-chore",
-        "prefixIcon": "🔧",
-        "prefixText": "CHORE",
-        "description": "その他なんでも"
+        "constant": "normal-wip",
+        "prefixIcon": "🚧",
+        "prefixText": "wip",
+        "description": "ブランチ内での作業wip状態、途中保存しておきたい"
       },
       {
         "id": "5",
-        "constant": "normal-release",
-        "prefixIcon": "🚀",
-        "prefixText": "RELEASE",
-        "description": "VERSION 1.0.0"
+        "constant": "normal-chore",
+        "prefixIcon": "📂",
+        "prefixText": "chore",
+        "description": "その他、フォーマット、フォルダ移動等"
+      },
+      {
+        "id": "5",
+        "constant": "normal-docs",
+        "prefixIcon": "📘",
+        "prefixText": "docs",
+        "description": "ドキュメント関連の追加・修正"
+      },
+      {
+        "id": "6",
+        "constant": "normal-github",
+        "prefixIcon": "📗",
+        "prefixText": ".github",
+        "description": "リポジトリ関連の設定(IssueTemp, GitHubActions etc)"
+      },
+      {
+        "id": "7",
+        "constant": "normal-package",
+        "prefixIcon": "📦",
+        "prefixText": "package",
+        "description": "パッケージインストール関連"
       }
     ]
   },
@@ -54,15 +75,15 @@
     "id": "1",
     "prefixType": "til",
     "icon": "📝",
-    "displayName": "DAILY REPORTS",
+    "displayName": "daily reports",
     "htmlClassName": "TILPrefixList",
     "prefix": [
       {
         "id": "0",
         "constant": "til-update",
         "prefixIcon": "📚",
-        "prefixText": "UPDATE",
-        "description": "DAILY REPORT 231201",
+        "prefixText": "update",
+        "description": "daily report 231201",
         "option": "tilDateSet"
       }
     ]
@@ -71,21 +92,21 @@
     "id": "2",
     "prefixType": "practice",
     "icon": "🏄🏻‍♀️",
-    "displayName": "PRACTICE PROJECT (React, Three.js)",
+    "displayName": "practice project (React, Three.js)",
     "htmlClassName": "practiceProjectPrefixList",
     "prefix": [
       {
         "id": "0",
         "constant": "practice-learn",
         "prefixIcon": "📖",
-        "prefixText": "LEARN",
+        "prefixText": "learn",
         "description": "学んだ物の名前、講座名、概要・まとめはコメントにでも"
       },
       {
         "id": "1",
         "constant": "practice-video",
         "prefixIcon": "🎥",
-        "prefixText": "WATCH",
+        "prefixText": "watch",
         "description": "1. 動画タイトル(Udemyコピペ) コメントに学んだ内容まとめ"
       }
     ]
@@ -94,7 +115,7 @@
     "id": "3",
     "prefixType": "paiza",
     "icon": "📓",
-    "displayName": "PAIZA",
+    "displayName": "paiza",
     "htmlClassName": "paizaPrefixList",
     "prefix": [
       {
