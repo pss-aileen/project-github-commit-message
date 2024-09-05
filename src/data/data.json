@@ -9,41 +9,41 @@
       {
         "id": "0",
         "constant": "basic-feature",
-        "emoji": "✨",
-        "emojiCode": ":sparkles:",
-        "prefixText": "Feat",
+        "emoji": "🌸",
+        "emojiCode": ":cherry_blossom:",
+        "prefixText": "feat",
         "description": "Update for user"
       },
       {
         "id": "1",
         "constant": "basic-fix",
-        "emoji": "🛠️",
-        "emojiCode": ":hammer_and_wrench:",
-        "prefixText": "Fix",
+        "emoji": "🐝",
+        "emojiCode": ":bee:",
+        "prefixText": "fix",
         "description": "Bug fix for user"
       },
       {
         "id": "2",
         "constant": "basic-docs",
-        "emoji": "📘",
-        "emojiCode": ":blue_book:",
-        "prefixText": "Docs",
+        "emoji": "📖",
+        "emojiCode": ":open_book:",
+        "prefixText": "docs",
         "description": "Update about Documents"
       },
       {
         "id": "3",
         "constant": "basic-format",
-        "emoji": "💫",
-        "emojiCode": ":dizzy:",
-        "prefixText": "Format",
+        "emoji": "🪄",
+        "emojiCode": ":magic_wand:",
+        "prefixText": "format",
         "description": "Format by Prettier、ESLint"
       },
       {
         "id": "4",
         "constant": "basic-github",
-        "emoji": "🐙",
+        "emoji": "👤",
         "emojiCode": ":octocat:",
-        "prefixText": "GitHub",
+        "prefixText": "github",
         "description": "GitHubActions, PR and Issue templates"
       },
       {
@@ -51,7 +51,7 @@
         "constant": "basic-refactor",
         "emoji": "🔮",
         "emojiCode": ":crystal_ball:",
-        "prefixText": "Refactor",
+        "prefixText": "refactor",
         "description": "Improves code without changing behavior"
       },
       {
@@ -59,7 +59,7 @@
         "constant": "basic-chore",
         "emoji": "📁",
         "emojiCode": ":file_folder:",
-        "prefixText": "Chore",
+        "prefixText": "chore",
         "description": "Install libraries and others"
       },
       {
@@ -67,7 +67,7 @@
         "constant": "basic-wip",
         "emoji": "🚧",
         "emojiCode": ":construction:",
-        "prefixText": "Wip",
+        "prefixText": "wip",
         "description": "Save a progress"
       }
     ]
@@ -85,7 +85,7 @@
         "constant": "til-update",
         "emoji": "📝",
         "emojiCode": ":memo:",
-        "prefixText": "Update",
+        "prefixText": "update",
         "description": "15 Oct 2024 Report",
         "option": "tilDateSet"
       }

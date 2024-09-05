@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import FormButton from './components/FormButton';
 import FormDescription from './components/FormDescription';
@@ -11,14 +11,41 @@ console.log(prefixData);
 
 function App() {
   const formModel = {
-    type: 'niji',
-    prefix: 'Niji',
-    prefixEmoji: '🌈',
-    summary: 'summary summary',
-    description: 'description description',
-    issueNumber: 12,
+    type: 'init',
+    prefix: 'init',
+    emoji: 'init',
+    emojiCode: 'init',
+    summary: 'init',
+    description: 'init',
+    issueNumber: '',
   };
+
   const [formData, setFormData] = useState(formModel);
+  const [typeOptionIndex, setTypeOptionIndex] = useState(0);
+  const [prefixOption, setPrefixOption] = useState(prefixData[typeOptionIndex].prefix);
+  const [prefixId, setPrefixId] = useState(0);
+  const [summary, setSummary] = useState('');
+  const [description, setDescription] = useState('');
+  const [issueNumber, setIssueNumber] = useState('');
+  // 入力系は別にリアルタイムである必要はないから、上3つはごっそり消していい
+  // submitする時にデータ取得して、modelにいれこんで、そこからデータ作成？
+
+  console.log(formData, prefixId);
+
+  useEffect(() => {
+    setPrefixOption(prefixData[typeOptionIndex].prefix);
+  }, [typeOptionIndex]);
+
+  useEffect(() => {
+    const newModel = { ...formData };
+    newModel.prefix = prefixData[typeOptionIndex].prefix[prefixId].prefixText;
+    newModel.emoji = prefixData[typeOptionIndex].prefix[prefixId].emoji;
+    newModel.emojiCode = prefixData[typeOptionIndex].prefix[prefixId].emojiCode;
+    newModel.summary = summary;
+    newModel.description = description;
+    newModel.issueNumber = issueNumber;
+    setFormData(newModel);
+  }, []);
 
   return (
     <>
@@ -35,10 +62,10 @@ function App() {
 
             {/* selectの内容がかわるたびに、useStateでPrefixの中身を変更する */}
 
-            <select id='type'>
-              {prefixData.map((data) => {
+            <select id='type' onChange={(e) => setTypeOptionIndex(e.target.value)}>
+              {prefixData.map((data, index) => {
                 return (
-                  <option value={data.prefixType}>
+                  <option value={index} key={data.id}>
                     {data.emoji} {data.displayName}
                   </option>
                 );
@@ -51,10 +78,10 @@ function App() {
 
             {/* useStateで変更 */}
 
-            <select size={4} id='prefix' name='prefix'>
-              {prefixData[0].prefix.map((data) => {
+            <select size={4} id='prefix' name='prefix' onChange={(e) => setPrefixId(e.target.value)}>
+              {prefixOption.map((data) => {
                 return (
-                  <option value={data.prefixText}>
+                  <option value={data.id} key={data.id}>
                     {data.emoji} {data.prefixText}: {data.description}
                   </option>
                 );
@@ -65,14 +92,14 @@ function App() {
           <FormItem>
             <FormLabel htmlFor='summary'>🎁 Summary</FormLabel>
 
-            <input type='text' id='summary' name='summary' placeholder='add xxx at README' autoComplete='off' />
+            <input type='text' id='summary' name='summary' placeholder='add xxx at README' autoComplete='off' onChange={(e) => setSummary(e.target.value)} />
             <FormDescription>add, update, delete</FormDescription>
           </FormItem>
 
           <FormItem>
             <FormLabel htmlFor='description'>📝 Description</FormLabel>
 
-            <textarea className='input-textarea' placeholder='Because ~~, I fix ~~.' rows={3} id='description' name='description'></textarea>
+            <textarea className='input-textarea' placeholder='Because ~~, I fix ~~.' rows={3} id='description' name='description' onChange={(e) => setDescription(e.target.value)}></textarea>
           </FormItem>
 
           <FormItem>
