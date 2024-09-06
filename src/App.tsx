@@ -28,7 +28,7 @@ function App() {
   const [description, setDescription] = useState('');
   const issueNumberRef = useRef(0);
   const [message, setMessage] = useState('🌝✨');
-  const isFirstRender = useRef(true);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     setPrefixOption(prefixData[typeOptionIndex].prefix);
@@ -44,18 +44,16 @@ function App() {
     newModel.description = description;
     newModel.issueNumber = issueNumberRef.current.valueAsNumber;
     setFormData(newModel);
+    setLoaded(true);
     console.log('update model');
   }
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    } else {
-      const content = `${formData.emoji} ${formData.prefix}: ${formData.summary} #${formData.issueNumber}` + `\n` + description;
-      setMessage(content);
-      console.log(content);
-    }
+    if (!loaded) return; // 初回ロード時またはロードが完了していない場合は何もしない
+
+    const content = `${formData.emoji} ${formData.prefix}: ${formData.summary} #${formData.issueNumber}` + `\n` + description;
+    setMessage(content);
+    console.log(content);
   }, [formData]);
 
   return (
