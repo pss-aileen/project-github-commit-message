@@ -6,20 +6,10 @@ import FormDescription from './components/FormDescription';
 import FormItem from './components/FormItem';
 import FormLabel from './components/FormLabel';
 import prefixData from './data/data.json';
-
-// console.log(prefixData);
+import formModel from './data/formModel';
+import FormPrefixOption from './components/FormPrefixOption';
 
 function App() {
-  const formModel = {
-    type: 'init',
-    prefix: 'init',
-    emoji: 'init',
-    emojiCode: 'init',
-    summary: 'init',
-    description: 'init',
-    issueNumber: '',
-  };
-
   const [formData, setFormData] = useState(formModel);
   const [typeOptionIndex, setTypeOptionIndex] = useState(0);
   const [prefixOption, setPrefixOption] = useState(prefixData[typeOptionIndex].prefix);
@@ -86,11 +76,11 @@ function App() {
             <select size={4} id='prefix' name='prefix' onChange={(e) => setPrefixId(e.target.value)}>
               {prefixOption.map((data, index) => {
                 const selected = index === 0 ? true : false;
-                return (
-                  <option value={data.id} key={data.id} selected={selected}>
-                    {data.emoji} {data.prefixText}: {data.description}
-                  </option>
-                );
+                console.log(selected, index);
+                // たぶん、選択しなおした時にレンダリングされなおされているから、変になっているかも。
+                // 選択したものを優先されるようにする
+                // 初回レンダリングとそれ以降は分けたほうがいいかも？
+                return <FormPrefixOption key={data.id} id={data.id} selected={selected} emoji={data.emoji} prefixText={data.prefixText} description={data.description} />;
               })}
             </select>
           </FormItem>
