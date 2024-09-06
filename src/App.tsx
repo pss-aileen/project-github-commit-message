@@ -5,46 +5,73 @@ import FormButton from './components/FormButton';
 import FormDescription from './components/FormDescription';
 import FormItem from './components/FormItem';
 import FormLabel from './components/FormLabel';
-import prefixData from './data/data.json';
+import data from './data/data.json';
 import formModel from './data/formModel';
 import FormPrefixOption from './components/FormPrefixOption';
+import FormPrefixSelect from './components/FormPrefixSelect';
+import FormSummaryInput from './components/FormSummaryInput';
+import FormTypeSelect from './components/FormTypeSelect';
 
 function App() {
-  const [formData, setFormData] = useState(formModel);
-  const [typeOptionIndex, setTypeOptionIndex] = useState(0);
-  const [prefixOption, setPrefixOption] = useState(prefixData[typeOptionIndex].prefix);
-  const [prefixId, setPrefixId] = useState(0);
+  const commitMessageInitialData = {
+    prefix: '',
+    emoji: '',
+    summary: '',
+    description: '',
+    issueId: null,
+    option: null,
+  };
+
+  const [selectedTypeId, setSelectedTypeId] = useState('0');
+  const [currentPrefixData, setCurrentPrefixData] = useState(data[Number(selectedTypeId)].prefix);
+  const [selectedPrefixId, setSelectedPrefixId] = useState(0);
+  const [commitMessageData, setCommitMessageData] = useState(commitMessageInitialData);
   const [summary, setSummary] = useState('');
   const [description, setDescription] = useState('');
-  const issueNumberRef = useRef(0);
-  const [message, setMessage] = useState('🌝✨');
-  const [loaded, setLoaded] = useState(false);
+  const [issueId, setIssueId] = useState('');
+  const [option, setOption] = useState('');
+  const [generatedCommitMessage, setGeneratedCommitMessage] = useState('🌝✨');
+  const [isFirstLoad, setIsFirstLoad] = useState(false);
 
   useEffect(() => {
-    setPrefixOption(prefixData[typeOptionIndex].prefix);
-    console.log('setPrefixOption');
-  }, [typeOptionIndex]);
+    setCurrentPrefixData(data[Number(selectedTypeId)].prefix);
+    setSelectedPrefixId(0);
+  }, [selectedTypeId]);
 
-  function updateModel() {
-    const newModel = { ...formData };
-    newModel.prefix = prefixData[typeOptionIndex].prefix[prefixId].prefixText;
-    newModel.emoji = prefixData[typeOptionIndex].prefix[prefixId].emoji;
-    newModel.emojiCode = prefixData[typeOptionIndex].prefix[prefixId].emojiCode;
-    newModel.summary = summary;
-    newModel.description = description;
-    newModel.issueNumber = issueNumberRef.current.valueAsNumber;
-    setFormData(newModel);
-    setLoaded(true);
-    console.log('update model');
+  // console.log('selectedTypeId: ', selectedTypeId);
+  // console.log('selectedPrefixId: ', selectedPrefixId);
+
+  function updateSelectedPrefixId(id: number) {
+    setSelectedPrefixId(id);
+  }
+
+  function updateCommitMessageData() {
+    const newData = {
+      prefix: currentPrefixData[selectedPrefixId].prefixText,
+      emoji: currentPrefixData[selectedPrefixId].emoji,
+      summary: summary ? summary : null,
+      description: description ? description : null,
+      issueId: issueId ? issueId : null,
+      option: null,
+    };
+
+    setCommitMessageData(newData);
+    setIsFirstLoad(true);
+    console.log(newData);
   }
 
   useEffect(() => {
-    if (!loaded) return; // 初回ロード時またはロードが完了していない場合は何もしない
+    if (!isFirstLoad) return;
 
-    const content = `${formData.emoji} ${formData.prefix}: ${formData.summary} #${formData.issueNumber}` + `\n` + description;
-    setMessage(content);
-    console.log(content);
-  }, [formData]);
+    let generatedCommitMessage = '';
+    const prefix = `${commitMessageData.emoji} ${commitMessageData.prefix}:`;
+    generatedCommitMessage += prefix;
+    if (summary) generatedCommitMessage += ' ' + summary;
+    if (issueId) generatedCommitMessage += ' #' + issueId;
+    if (description) generatedCommitMessage += '\n' + description;
+
+    setGeneratedCommitMessage(generatedCommitMessage);
+  }, [commitMessageData]);
 
   return (
     <>
@@ -59,36 +86,19 @@ function App() {
           <FormItem>
             <FormLabel htmlFor='type'>📦 Type</FormLabel>
 
-            <select id='type' onChange={(e) => setTypeOptionIndex(e.target.value)}>
-              {prefixData.map((data, index) => {
-                return (
-                  <option value={index} key={data.id}>
-                    {data.emoji} {data.displayName}
-                  </option>
-                );
-              })}
-            </select>
+            <FormTypeSelect selectedTypeId={selectedTypeId} onUpdate={setSelectedTypeId} data={data} />
           </FormItem>
 
           <FormItem>
             <FormLabel htmlFor='prefix'>🧸 Prefix</FormLabel>
 
-            <select size={4} id='prefix' name='prefix' onChange={(e) => setPrefixId(e.target.value)}>
-              {prefixOption.map((data, index) => {
-                const selected = index === 0 ? true : false;
-                console.log(selected, index);
-                // たぶん、選択しなおした時にレンダリングされなおされているから、変になっているかも。
-                // 選択したものを優先されるようにする
-                // 初回レンダリングとそれ以降は分けたほうがいいかも？
-                return <FormPrefixOption key={data.id} id={data.id} selected={selected} emoji={data.emoji} prefixText={data.prefixText} description={data.description} />;
-              })}
-            </select>
+            <FormPrefixSelect data={currentPrefixData} onUpdate={updateSelectedPrefixId} selectedPrefixId={selectedPrefixId} />
           </FormItem>
 
           <FormItem>
             <FormLabel htmlFor='summary'>🎁 Summary ({String(summary.length).padStart(2, '0')}/62)</FormLabel>
 
-            <input type='text' id='summary' name='summary' placeholder='add xxx at README' autoComplete='off' onChange={(e) => setSummary(e.target.value)} value={summary} />
+            <FormSummaryInput summary={summary} setSummary={setSummary} />
             <FormDescription>add, update, delete. Max chars is 62 (72-(emoji+prefix)).</FormDescription>
           </FormItem>
 
@@ -101,7 +111,7 @@ function App() {
           <FormItem>
             <FormLabel htmlFor='issue'>📍 Issue Number</FormLabel>
 
-            <input type='number' defaultValue='' name='issue' id='issue' placeholder='XX' autoComplete='off' min='1' max='9999' ref={issueNumberRef} />
+            <input type='number' value={issueId} name='issue' id='issue' placeholder='XX' autoComplete='off' min='1' max='9999' onChange={(e) => setIssueId(e.target.value)} />
             <FormDescription>This value will be saved in LocalStorage.</FormDescription>
           </FormItem>
 
@@ -113,14 +123,14 @@ function App() {
               <option value=''>git</option>
             </select>
 
-            <textarea className='bg-gray-100 border-dotted border-gray-300' rows={3} name='generatedMessage' id='message-output' value={message}></textarea>
+            <textarea className='bg-gray-100 border-dotted border-gray-300' rows={3} name='generatedMessage' id='message-output' value={generatedCommitMessage} onChange={(e) => setGeneratedCommitMessage(e.target.value)}></textarea>
             <FormDescription>One line is summary. Second line is description.</FormDescription>
           </FormItem>
 
           <FormItem>
             <ul className='flex gap-4 mt-5'>
               <li className='flex-1'>
-                <FormButton type='generate' onClick={updateModel}>
+                <FormButton type='generate' onClick={updateCommitMessageData}>
                   GENERATE
                 </FormButton>
               </li>

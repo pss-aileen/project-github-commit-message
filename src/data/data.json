@@ -1,13 +1,13 @@
 [
   {
-    "id": "0",
+    "id": 0,
     "prefixType": "basic",
     "emoji": "👩‍💻",
     "displayName": "Basic",
     "htmlClassName": "basicPrefixList",
     "prefix": [
       {
-        "id": "0",
+        "id": 0,
         "constant": "basic-feature",
         "emoji": "🌸",
         "emojiCode": ":cherry_blossom:",
@@ -15,7 +15,7 @@
         "description": "Update for user"
       },
       {
-        "id": "1",
+        "id": 1,
         "constant": "basic-fix",
         "emoji": "🐝",
         "emojiCode": ":bee:",
@@ -23,7 +23,7 @@
         "description": "Bug fix for user"
       },
       {
-        "id": "2",
+        "id": 2,
         "constant": "basic-docs",
         "emoji": "📖",
         "emojiCode": ":open_book:",
@@ -31,7 +31,7 @@
         "description": "Update about Documents"
       },
       {
-        "id": "3",
+        "id": 3,
         "constant": "basic-format",
         "emoji": "🪄",
         "emojiCode": ":magic_wand:",
@@ -39,7 +39,7 @@
         "description": "Format by Prettier、ESLint"
       },
       {
-        "id": "4",
+        "id": 4,
         "constant": "basic-github",
         "emoji": "👤",
         "emojiCode": ":octocat:",
@@ -47,7 +47,7 @@
         "description": "GitHubActions, PR and Issue templates"
       },
       {
-        "id": "5",
+        "id": 5,
         "constant": "basic-refactor",
         "emoji": "🔮",
         "emojiCode": ":crystal_ball:",
@@ -55,7 +55,7 @@
         "description": "Improves code without changing behavior"
       },
       {
-        "id": "6",
+        "id": 6,
         "constant": "basic-chore",
         "emoji": "📁",
         "emojiCode": ":file_folder:",
@@ -63,7 +63,7 @@
         "description": "Install libraries and others"
       },
       {
-        "id": "7",
+        "id": 7,
         "constant": "basic-wip",
         "emoji": "🚧",
         "emojiCode": ":construction:",
@@ -73,7 +73,7 @@
     ]
   },
   {
-    "id": "1",
+    "id": 1,
     "prefixType": "til",
     "emoji": "📝",
     "emojiCode": ":memo:",
@@ -81,7 +81,7 @@
     "htmlClassName": "TILPrefixList",
     "prefix": [
       {
-        "id": "0",
+        "id": 0,
         "constant": "til-update",
         "emoji": "📝",
         "emojiCode": ":memo:",
@@ -92,7 +92,7 @@
     ]
   },
   {
-    "id": "4",
+    "id": 2,
     "prefixType": "first-contributions-ja",
     "emoji": "🤝",
     "emojiCode": ":memo:",
@@ -100,7 +100,7 @@
     "htmlClassName": "firstContributionsJAPrefixList",
     "prefix": [
       {
-        "id": "0",
+        "id": 0,
         "constant": "fcj-feat",
         "emoji": "✨",
         "emojiCode": ":memo:",
@@ -108,7 +108,7 @@
         "description": "新機能追加関連"
       },
       {
-        "id": "1",
+        "id": 1,
         "constant": "fcj-docs",
         "emoji": "📚",
         "emojiCode": ":memo:",
@@ -116,7 +116,7 @@
         "description": "ドキュメントの追加・修正・削除"
       },
       {
-        "id": "2",
+        "id": 2,
         "constant": "fcj-fix",
         "emoji": "🐛",
         "emojiCode": ":memo:",
@@ -124,7 +124,7 @@
         "description": "機能やバグに関する修正"
       },
       {
-        "id": "3",
+        "id": 3,
         "constant": "fcj-style",
         "emoji": "🎨",
         "emojiCode": ":memo:",
@@ -132,7 +132,7 @@
         "description": "スタイル関連"
       },
       {
-        "id": "4",
+        "id": 4,
         "constant": "fcj-chore",
         "emoji": "🔧",
         "emojiCode": ":memo:",
