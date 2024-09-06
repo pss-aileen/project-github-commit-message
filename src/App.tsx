@@ -27,11 +27,11 @@ function App() {
   const [summary, setSummary] = useState('');
   const [description, setDescription] = useState('');
   const issueNumberRef = useRef(0);
-  // const generatedCommitMessageRef = useRef('🌝✨');
   const [message, setMessage] = useState('🌝✨');
 
   useEffect(() => {
     setPrefixOption(prefixData[typeOptionIndex].prefix);
+    console.log('setPrefixOption');
   }, [typeOptionIndex]);
 
   function updateModel() {
@@ -43,10 +43,11 @@ function App() {
     newModel.description = description;
     newModel.issueNumber = issueNumberRef.current.valueAsNumber;
     setFormData(newModel);
+    console.log('update model');
   }
 
   useEffect(() => {
-    const content = `${formData.emoji} ${formData.prefix}: ${formData.summary} #${formData.issueNumber}`;
+    const content = `${formData.emoji} ${formData.prefix}: ${formData.summary} #${formData.issueNumber}` + `\n` + description;
     setMessage(content);
     console.log(content);
   }, [formData]);
@@ -93,14 +94,14 @@ function App() {
           <FormItem>
             <FormLabel htmlFor='summary'>🎁 Summary ({String(summary.length).padStart(2, '0')}/62)</FormLabel>
 
-            <input type='text' id='summary' name='summary' placeholder='add xxx at README' autoComplete='off' onChange={(e) => setSummary(e.target.value)} />
+            <input type='text' id='summary' name='summary' placeholder='add xxx at README' autoComplete='off' onChange={(e) => setSummary(e.target.value)} value={summary} />
             <FormDescription>add, update, delete. Max chars is 62 (72-(emoji+prefix)).</FormDescription>
           </FormItem>
 
           <FormItem>
             <FormLabel htmlFor='description'>📝 Description ({String(description.length).padStart(3, '0')})</FormLabel>
 
-            <textarea className='input-textarea' placeholder='Because ~~, I fix ~~.' rows={3} id='description' name='description' onChange={(e) => setDescription(e.target.value)}></textarea>
+            <textarea className='input-textarea' placeholder='Because ~~, I fix ~~.' rows={3} id='description' name='description' onChange={(e) => setDescription(e.target.value)} value={description}></textarea>
           </FormItem>
 
           <FormItem>
@@ -118,10 +119,7 @@ function App() {
               <option value=''>git</option>
             </select>
 
-            {message}
-            <textarea className='bg-gray-100 border-dotted border-gray-300' rows={3} name='generatedMessage' id='message-output'>
-              {message}
-            </textarea>
+            <textarea className='bg-gray-100 border-dotted border-gray-300' rows={3} name='generatedMessage' id='message-output' value={message}></textarea>
             <FormDescription>One line is summary. Second line is description.</FormDescription>
           </FormItem>
 
