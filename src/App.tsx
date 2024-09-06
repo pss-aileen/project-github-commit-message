@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import FormButton from './components/FormButton';
 import FormDescription from './components/FormDescription';
@@ -7,7 +7,7 @@ import FormItem from './components/FormItem';
 import FormLabel from './components/FormLabel';
 import prefixData from './data/data.json';
 
-console.log(prefixData);
+// console.log(prefixData);
 
 function App() {
   const formModel = {
@@ -26,26 +26,26 @@ function App() {
   const [prefixId, setPrefixId] = useState(0);
   const [summary, setSummary] = useState('');
   const [description, setDescription] = useState('');
-  const [issueNumber, setIssueNumber] = useState('');
+  const issueNumberRef = useRef(0);
   // 入力系は別にリアルタイムである必要はないから、上3つはごっそり消していい
   // submitする時にデータ取得して、modelにいれこんで、そこからデータ作成？
 
-  console.log(formData, prefixId);
+  // console.log(formData, prefixId);
 
   useEffect(() => {
     setPrefixOption(prefixData[typeOptionIndex].prefix);
   }, [typeOptionIndex]);
 
-  useEffect(() => {
+  function updateModel() {
     const newModel = { ...formData };
     newModel.prefix = prefixData[typeOptionIndex].prefix[prefixId].prefixText;
     newModel.emoji = prefixData[typeOptionIndex].prefix[prefixId].emoji;
     newModel.emojiCode = prefixData[typeOptionIndex].prefix[prefixId].emojiCode;
-    newModel.summary = summary;
-    newModel.description = description;
-    newModel.issueNumber = issueNumber;
+    // newModel.summary = summary;
+    // newModel.description = description;
+    // newModel.issueNumber = issueNumber;
     setFormData(newModel);
-  }, []);
+  }
 
   return (
     <>
@@ -76,8 +76,6 @@ function App() {
           <FormItem>
             <FormLabel htmlFor='prefix'>🧸 Prefix</FormLabel>
 
-            {/* useStateで変更 */}
-
             <select size={4} id='prefix' name='prefix' onChange={(e) => setPrefixId(e.target.value)}>
               {prefixOption.map((data) => {
                 return (
@@ -90,14 +88,14 @@ function App() {
           </FormItem>
 
           <FormItem>
-            <FormLabel htmlFor='summary'>🎁 Summary</FormLabel>
+            <FormLabel htmlFor='summary'>🎁 Summary ({String(summary.length).padStart(2, '0')}/62)</FormLabel>
 
             <input type='text' id='summary' name='summary' placeholder='add xxx at README' autoComplete='off' onChange={(e) => setSummary(e.target.value)} />
-            <FormDescription>add, update, delete</FormDescription>
+            <FormDescription>add, update, delete. Max chars is 62 (72-(emoji+prefix)).</FormDescription>
           </FormItem>
 
           <FormItem>
-            <FormLabel htmlFor='description'>📝 Description</FormLabel>
+            <FormLabel htmlFor='description'>📝 Description ({String(description.length).padStart(3, '0')})</FormLabel>
 
             <textarea className='input-textarea' placeholder='Because ~~, I fix ~~.' rows={3} id='description' name='description' onChange={(e) => setDescription(e.target.value)}></textarea>
           </FormItem>
@@ -105,7 +103,7 @@ function App() {
           <FormItem>
             <FormLabel htmlFor='issue'>📍 Issue Number</FormLabel>
 
-            <input type='number' defaultValue='' name='issue' id='issue' placeholder='XX' autoComplete='off' min='1' max='9999' />
+            <input type='number' defaultValue='' name='issue' id='issue' placeholder='XX' autoComplete='off' min='1' max='9999' ref={issueNumberRef} />
             <FormDescription>This value will be saved in LocalStorage.</FormDescription>
           </FormItem>
 
@@ -129,6 +127,9 @@ function App() {
             <ul className='flex gap-4 mt-5'>
               <li className='flex-1'>
                 <FormButton type='generate'>GENERATE</FormButton>
+                <button onClick={() => console.log(issueNumberRef.current.valueAsNumber)} type='button'>
+                  test
+                </button>
               </li>
               <li className='flex-1'>
                 <FormButton type='copy'>COPY</FormButton>
