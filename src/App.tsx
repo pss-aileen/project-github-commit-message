@@ -28,6 +28,7 @@ function App() {
   const [description, setDescription] = useState('');
   const issueNumberRef = useRef(0);
   const [message, setMessage] = useState('🌝✨');
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     setPrefixOption(prefixData[typeOptionIndex].prefix);
@@ -47,9 +48,14 @@ function App() {
   }
 
   useEffect(() => {
-    const content = `${formData.emoji} ${formData.prefix}: ${formData.summary} #${formData.issueNumber}` + `\n` + description;
-    setMessage(content);
-    console.log(content);
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    } else {
+      const content = `${formData.emoji} ${formData.prefix}: ${formData.summary} #${formData.issueNumber}` + `\n` + description;
+      setMessage(content);
+      console.log(content);
+    }
   }, [formData]);
 
   return (
