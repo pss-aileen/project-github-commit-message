@@ -27,10 +27,8 @@ function App() {
   const [summary, setSummary] = useState('');
   const [description, setDescription] = useState('');
   const issueNumberRef = useRef(0);
-  // 入力系は別にリアルタイムである必要はないから、上3つはごっそり消していい
-  // submitする時にデータ取得して、modelにいれこんで、そこからデータ作成？
-
-  // console.log(formData, prefixId);
+  // const generatedCommitMessageRef = useRef('🌝✨');
+  const [message, setMessage] = useState('🌝✨');
 
   useEffect(() => {
     setPrefixOption(prefixData[typeOptionIndex].prefix);
@@ -41,11 +39,17 @@ function App() {
     newModel.prefix = prefixData[typeOptionIndex].prefix[prefixId].prefixText;
     newModel.emoji = prefixData[typeOptionIndex].prefix[prefixId].emoji;
     newModel.emojiCode = prefixData[typeOptionIndex].prefix[prefixId].emojiCode;
-    // newModel.summary = summary;
-    // newModel.description = description;
-    // newModel.issueNumber = issueNumber;
+    newModel.summary = summary;
+    newModel.description = description;
+    newModel.issueNumber = issueNumberRef.current.valueAsNumber;
     setFormData(newModel);
   }
+
+  useEffect(() => {
+    const content = `${formData.emoji} ${formData.prefix}: ${formData.summary} #${formData.issueNumber}`;
+    setMessage(content);
+    console.log(content);
+  }, [formData]);
 
   return (
     <>
@@ -59,8 +63,6 @@ function App() {
         <form>
           <FormItem>
             <FormLabel htmlFor='type'>📦 Type</FormLabel>
-
-            {/* selectの内容がかわるたびに、useStateでPrefixの中身を変更する */}
 
             <select id='type' onChange={(e) => setTypeOptionIndex(e.target.value)}>
               {prefixData.map((data, index) => {
@@ -77,9 +79,10 @@ function App() {
             <FormLabel htmlFor='prefix'>🧸 Prefix</FormLabel>
 
             <select size={4} id='prefix' name='prefix' onChange={(e) => setPrefixId(e.target.value)}>
-              {prefixOption.map((data) => {
+              {prefixOption.map((data, index) => {
+                const selected = index === 0 ? true : false;
                 return (
-                  <option value={data.id} key={data.id}>
+                  <option value={data.id} key={data.id} selected={selected}>
                     {data.emoji} {data.prefixText}: {data.description}
                   </option>
                 );
@@ -115,18 +118,17 @@ function App() {
               <option value=''>git</option>
             </select>
 
+            {message}
             <textarea className='bg-gray-100 border-dotted border-gray-300' rows={3} name='generatedMessage' id='message-output'>
-              🌝✨
+              {message}
             </textarea>
             <FormDescription>One line is summary. Second line is description.</FormDescription>
           </FormItem>
 
           <FormItem>
-            {/* generateを押すと、指定されている内容を全てかきあつめて指定のフォーマットで繋げる */}
-            {/* copyはただただコピー */}
             <ul className='flex gap-4 mt-5'>
               <li className='flex-1'>
-                <FormButton type='generate' onClick={() => console.log(issueNumberRef.current.valueAsNumber)}>
+                <FormButton type='generate' onClick={updateModel}>
                   GENERATE
                 </FormButton>
               </li>
