@@ -126,10 +126,9 @@ function App() {
             {/* copyはただただコピー */}
             <ul className='flex gap-4 mt-5'>
               <li className='flex-1'>
-                <FormButton type='generate'>GENERATE</FormButton>
-                <button onClick={() => console.log(issueNumberRef.current.valueAsNumber)} type='button'>
-                  test
-                </button>
+                <FormButton type='generate' onClick={() => console.log(issueNumberRef.current.valueAsNumber)}>
+                  GENERATE
+                </FormButton>
               </li>
               <li className='flex-1'>
                 <FormButton type='copy'>COPY</FormButton>
