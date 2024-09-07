@@ -5,9 +5,10 @@ type ButtonType = 'generate' | 'copy' | 'reset';
 interface FormButtonProps {
   type: ButtonType;
   children: React.ReactNode;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function FormButton({ type, children }: FormButtonProps) {
+export default function FormButton({ type, children, onClick }: FormButtonProps) {
   let className = '';
 
   const commonButtonCSS = 'block rounded-md text-lg px-1 tracking-widest select-none hover:opacity-70 active:translate-y-0.5 transition';
@@ -28,7 +29,7 @@ export default function FormButton({ type, children }: FormButtonProps) {
       break;
   }
   return (
-    <button className={className} id='btn-generate' type='button'>
+    <button className={className} id='btn-generate' type='button' onClick={onClick}>
       {children}
     </button>
   );

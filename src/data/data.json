@@ -1,0 +1,144 @@
+[
+  {
+    "id": 0,
+    "prefixType": "basic",
+    "emoji": "👩‍💻",
+    "displayName": "Basic",
+    "htmlClassName": "basicPrefixList",
+    "prefix": [
+      {
+        "id": 0,
+        "constant": "basic-feature",
+        "emoji": "🌸",
+        "emojiCode": ":cherry_blossom:",
+        "prefixText": "feat",
+        "description": "Update for user"
+      },
+      {
+        "id": 1,
+        "constant": "basic-fix",
+        "emoji": "🐝",
+        "emojiCode": ":bee:",
+        "prefixText": "fix",
+        "description": "Bug fix for user"
+      },
+      {
+        "id": 2,
+        "constant": "basic-docs",
+        "emoji": "📖",
+        "emojiCode": ":open_book:",
+        "prefixText": "docs",
+        "description": "Update about Documents"
+      },
+      {
+        "id": 3,
+        "constant": "basic-format",
+        "emoji": "🪄",
+        "emojiCode": ":magic_wand:",
+        "prefixText": "format",
+        "description": "Format by Prettier、ESLint"
+      },
+      {
+        "id": 4,
+        "constant": "basic-github",
+        "emoji": "👤",
+        "emojiCode": ":octocat:",
+        "prefixText": "github",
+        "description": "GitHubActions, PR and Issue templates"
+      },
+      {
+        "id": 5,
+        "constant": "basic-refactor",
+        "emoji": "🔮",
+        "emojiCode": ":crystal_ball:",
+        "prefixText": "refactor",
+        "description": "Improves code without changing behavior"
+      },
+      {
+        "id": 6,
+        "constant": "basic-chore",
+        "emoji": "📁",
+        "emojiCode": ":file_folder:",
+        "prefixText": "chore",
+        "description": "Install libraries and others"
+      },
+      {
+        "id": 7,
+        "constant": "basic-wip",
+        "emoji": "🚧",
+        "emojiCode": ":construction:",
+        "prefixText": "wip",
+        "description": "Save a progress"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "prefixType": "til",
+    "emoji": "📝",
+    "emojiCode": ":memo:",
+    "displayName": "Today I Learned",
+    "htmlClassName": "TILPrefixList",
+    "prefix": [
+      {
+        "id": 0,
+        "constant": "til-update",
+        "emoji": "📝",
+        "emojiCode": ":memo:",
+        "prefixText": "update",
+        "description": "15 Oct 2024 Report",
+        "option": "tilDateSet"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "prefixType": "first-contributions-ja",
+    "emoji": "🤝",
+    "emojiCode": ":handshake:",
+    "displayName": "First Contributions JA",
+    "htmlClassName": "firstContributionsJAPrefixList",
+    "prefix": [
+      {
+        "id": 0,
+        "constant": "fcj-feat",
+        "emoji": "✨",
+        "emojiCode": ":sparkles:",
+        "prefixText": "feat",
+        "description": "新機能追加関連"
+      },
+      {
+        "id": 1,
+        "constant": "fcj-docs",
+        "emoji": "📚",
+        "emojiCode": ":books:",
+        "prefixText": "docs",
+        "description": "ドキュメントの追加・修正・削除"
+      },
+      {
+        "id": 2,
+        "constant": "fcj-fix",
+        "emoji": "🐛",
+        "emojiCode": ":bug:",
+        "prefixText": "fix",
+        "description": "機能やバグに関する修正"
+      },
+      {
+        "id": 3,
+        "constant": "fcj-style",
+        "emoji": "🎨",
+        "emojiCode": ":art:",
+        "prefixText": "style",
+        "description": "スタイル関連"
+      },
+      {
+        "id": 4,
+        "constant": "fcj-chore",
+        "emoji": "🔧",
+        "emojiCode": ":wrench:",
+        "prefixText": "chore",
+        "description": "雑事、カテゴライズする必要のないもの"
+      }
+    ]
+  }
+]
