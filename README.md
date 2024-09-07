@@ -1,48 +1,32 @@
-<!-- ![Commit Easily](_project/images/image-screen.jpg) -->
-
 # Commit Easily
 
-Commit Easily はコミットメッセージを簡単に何も考えずに作成できる Web アプリです。
-[Version 3.0.0]から fork して、ご自身に合った prefix を簡単に作成することができます。
+Commit Easily" is a web application that allows you to easily create commit messages without having to think too much.
 
-## 概要
+![Commit Easily](https://github.com/user-attachments/assets/27913e1f-5aed-488c-83a4-2ad68f503c27)
 
-- prefix の入力を簡単にしたい
-- プロジェクトごとの prefix を簡単に取得、閲覧したい
-- 何のための prefix かの解説も同時に見たい
-- スペースの開け方を統一したい
-- ターミナルの入力途中に間違ってエンターキーを押してやりなおしたくない
-- とにかく頭を無にして何も考えることなくコミットメッセージを考えたい
+## Overview
 
-そんな人（自分）の悩みを解決する Web アプリです。
+- I want to simplify the input of prefixes.
+- I want to easily retrieve and view prefixes for each project.
+- I want to see explanations of what each prefix is for.
+- I want to standardize the spacing.
+- ~~I don’t want to accidentally press Enter while typing in the terminal and have to redo it.~~
+- I want to create commit messages without having to think at all.
+
+This web application solves these problems for people (like me).
 
 URL: https://pss-aileen.github.io/project-github-commit-message/
 
-## 使い方
-
-1. prefix のタイプを選択
-1. prefix を選択
-1. 変更内容の概要を入力
-1. 詳細を書く（必要であれば）
-1. issue 番号を書く（必要であれば）
-1. GENERATE をクリックしてコミットメッセージを生成
-1. COPY をクリックしてターミナルに貼り付け
-
-## 使用技術
+## Tech Stack
 
 - HTML/CSS
 - React
 - TypeScript
 - Tailwind CSS
-- その他
-  - json に prefix を保管し、オブジェクト指向をでプログラムを書きました（Version 3 から）
 
-## 制作について
+## Project Duration
 
-- 制作期間（初回リリース）
-  - 3 日
-- こだわり
-  - 気分が上がるように可愛いアイコンを使ってデザインをまとめました
+3 days (first release).
 
 ---
 
