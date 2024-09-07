@@ -14,6 +14,7 @@ function App() {
   const commitMessageInitialData = {
     prefix: '',
     emoji: '',
+    emojiCode: '',
     summary: '',
     description: '',
     issueId: null,
@@ -24,9 +25,11 @@ function App() {
   const [selectedPrefixId, setSelectedPrefixId] = useState(0);
   const [commitMessageData, setCommitMessageData] = useState(commitMessageInitialData);
   const [summary, setSummary] = useState('');
+  const [previousSummary, setPreviousSummary] = useState('');
   const [description, setDescription] = useState('');
   const [issueId, setIssueId] = useState('');
   const [generatedCommitMessage, setGeneratedCommitMessage] = useState('🌝✨');
+  const [previewCommitMessage, setPreviewCommitMessage] = useState('Preview is showen here.');
   const [isFirstLoad, setIsFirstLoad] = useState(false);
 
   useEffect(() => {
@@ -42,13 +45,14 @@ function App() {
     if (!isFirstLoad) return;
 
     let generatedCommitMessage = '';
-    const prefix = `${commitMessageData.emoji} ${commitMessageData.prefix}:`;
+    const prefix = `${commitMessageData.emojiCode} ${commitMessageData.prefix}:`;
     generatedCommitMessage += prefix;
     if (summary) generatedCommitMessage += ' ' + summary;
     if (issueId) generatedCommitMessage += ' #' + issueId;
     if (description) generatedCommitMessage += '\n' + description;
 
     setGeneratedCommitMessage(generatedCommitMessage);
+    setPreviewCommitMessage(`${commitMessageData.emoji} ${commitMessageData.prefix}: ${summary} ${issueId ? `#` + issueId : ''}`);
   }, [commitMessageData]);
 
   function updateSelectedPrefixId(id: number) {
@@ -58,7 +62,7 @@ function App() {
   function excuteOption() {
     const currentPrefix = currentPrefixData[selectedPrefixId].option ? currentPrefixData[selectedPrefixId].option : undefined;
     if (!currentPrefix) {
-      setSummary('');
+      setSummary(previousSummary);
       return;
     }
     if (currentPrefix === 'tilDateSet') {
@@ -68,6 +72,7 @@ function App() {
       const monthShortName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(today);
 
       const newSummary = `${day.toString().padStart(2, '0')} ${monthShortName} ${year} Report`;
+      setPreviousSummary(summary);
       setSummary(newSummary);
     }
   }
@@ -76,6 +81,7 @@ function App() {
     const newData = {
       prefix: currentPrefixData[selectedPrefixId].prefixText,
       emoji: currentPrefixData[selectedPrefixId].emoji,
+      emojiCode: currentPrefixData[selectedPrefixId].emojiCode,
       summary: summary ? summary : null,
       description: description ? description : null,
       issueId: issueId ? issueId : null,
@@ -135,6 +141,7 @@ function App() {
               <option value=''>git</option>
             </select>
 
+            <input type='text' name='' id='' value={previewCommitMessage} onChange={(e) => setPreviewCommitMessage(e.target.value)} readOnly />
             <textarea className='bg-gray-100 border-dotted border-gray-300' rows={3} name='generatedMessage' id='message-output' value={generatedCommitMessage} onChange={(e) => setGeneratedCommitMessage(e.target.value)}></textarea>
             <FormDescription>One line is summary. Second line is description.</FormDescription>
           </FormItem>

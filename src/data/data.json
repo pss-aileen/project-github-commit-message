@@ -95,7 +95,7 @@
     "id": 2,
     "prefixType": "first-contributions-ja",
     "emoji": "🤝",
-    "emojiCode": ":memo:",
+    "emojiCode": ":handshake:",
     "displayName": "First Contributions JA",
     "htmlClassName": "firstContributionsJAPrefixList",
     "prefix": [
@@ -103,7 +103,7 @@
         "id": 0,
         "constant": "fcj-feat",
         "emoji": "✨",
-        "emojiCode": ":memo:",
+        "emojiCode": ":sparkles:",
         "prefixText": "feat",
         "description": "新機能追加関連"
       },
@@ -111,7 +111,7 @@
         "id": 1,
         "constant": "fcj-docs",
         "emoji": "📚",
-        "emojiCode": ":memo:",
+        "emojiCode": ":books:",
         "prefixText": "docs",
         "description": "ドキュメントの追加・修正・削除"
       },
@@ -119,7 +119,7 @@
         "id": 2,
         "constant": "fcj-fix",
         "emoji": "🐛",
-        "emojiCode": ":memo:",
+        "emojiCode": ":bug:",
         "prefixText": "fix",
         "description": "機能やバグに関する修正"
       },
@@ -127,7 +127,7 @@
         "id": 3,
         "constant": "fcj-style",
         "emoji": "🎨",
-        "emojiCode": ":memo:",
+        "emojiCode": ":art:",
         "prefixText": "style",
         "description": "スタイル関連"
       },
@@ -135,7 +135,7 @@
         "id": 4,
         "constant": "fcj-chore",
         "emoji": "🔧",
-        "emojiCode": ":memo:",
+        "emojiCode": ":wrench:",
         "prefixText": "chore",
         "description": "雑事、カテゴライズする必要のないもの"
       }
