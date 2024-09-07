@@ -6,8 +6,6 @@ import FormDescription from './components/FormDescription';
 import FormItem from './components/FormItem';
 import FormLabel from './components/FormLabel';
 import data from './data/data.json';
-import formModel from './data/formModel';
-import FormPrefixOption from './components/FormPrefixOption';
 import FormPrefixSelect from './components/FormPrefixSelect';
 import FormSummaryInput from './components/FormSummaryInput';
 import FormTypeSelect from './components/FormTypeSelect';
@@ -19,7 +17,6 @@ function App() {
     summary: '',
     description: '',
     issueId: null,
-    option: null,
   };
 
   const [selectedTypeId, setSelectedTypeId] = useState('0');
@@ -29,7 +26,6 @@ function App() {
   const [summary, setSummary] = useState('');
   const [description, setDescription] = useState('');
   const [issueId, setIssueId] = useState('');
-  const [option, setOption] = useState('');
   const [generatedCommitMessage, setGeneratedCommitMessage] = useState('🌝✨');
   const [isFirstLoad, setIsFirstLoad] = useState(false);
 
@@ -60,7 +56,7 @@ function App() {
   }
 
   function excuteOption() {
-    const currentPrefix = currentPrefixData[selectedPrefixId].option;
+    const currentPrefix = currentPrefixData[selectedPrefixId].option ? currentPrefixData[selectedPrefixId].option : undefined;
     if (!currentPrefix) {
       setSummary('');
       return;
@@ -68,7 +64,6 @@ function App() {
     if (currentPrefix === 'tilDateSet') {
       const today = new Date();
       const year = today.getFullYear();
-      const month = today.getMonth();
       const day = today.getDate();
       const monthShortName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(today);
 
@@ -84,7 +79,6 @@ function App() {
       summary: summary ? summary : null,
       description: description ? description : null,
       issueId: issueId ? issueId : null,
-      option: null,
     };
 
     setCommitMessageData(newData);

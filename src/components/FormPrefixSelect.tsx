@@ -12,11 +12,6 @@ interface FormPrefixSelectProps {
   selectedPrefixId: number;
 }
 
-console.log('FromPrefixSelect');
-
-// もし、optionがあったら、optionの値をOptionに渡すようにする
-// optionの命令を格納しておいて、それを呼び出してSummaryに反映させる
-
 export default function FormPrefixSelect({ data, onUpdate, selectedPrefixId }: FormPrefixSelectProps) {
   return (
     <select size={4} value={selectedPrefixId} onChange={(e) => onUpdate(parseInt(e.target.value))}>
