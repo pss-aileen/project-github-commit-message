@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import FormButton from './components/FormButton';
 import FormDescription from './components/FormDescription';
@@ -31,6 +31,7 @@ function App() {
   const [generatedCommitMessage, setGeneratedCommitMessage] = useState('🌝✨');
   const [previewCommitMessage, setPreviewCommitMessage] = useState('Preview is showen here.');
   const [isFirstLoad, setIsFirstLoad] = useState(false);
+  const [copyButtonText, setCopyButtonText] = useState('COPY');
 
   useEffect(() => {
     setCurrentPrefixData(data[Number(selectedTypeId)].prefix);
@@ -77,6 +78,7 @@ function App() {
     }
   }
 
+  // button function
   function updateCommitMessageData() {
     const newData = {
       prefix: currentPrefixData[selectedPrefixId].prefixText,
@@ -91,13 +93,35 @@ function App() {
     setIsFirstLoad(true);
   }
 
+  // reset button
+  function reset() {
+    setSummary('');
+    setPreviousSummary('');
+    setDescription('');
+    setIssueId('');
+    setGeneratedCommitMessage('🧙🪄');
+    setPreviewCommitMessage('Preview is showen here.');
+  }
+
+  // copy button
+  function copy() {
+    const text = generatedCommitMessage;
+    navigator.clipboard.writeText(text);
+    setCopyButtonText('CLIPED!');
+    setTimeout(() => {
+      setCopyButtonText('COPY');
+    }, 1000);
+  }
+
   return (
     <>
       <div className='font-mono text-gray-700 mx-auto mb-10 mt-10 max-w-xl px-5'>
         <div className='flex items-center justify-between gap-4'>
           <h1 className='text-3xl font-bold text-pink-600'>Commit Easily</h1>
 
-          <FormButton type='reset'>RESET</FormButton>
+          <FormButton type='reset' onClick={reset}>
+            RESET
+          </FormButton>
         </div>
 
         <form>
@@ -134,12 +158,13 @@ function App() {
           </FormItem>
 
           <FormItem>
-            <FormLabel htmlFor=''>🔮 Generated Commit Message</FormLabel>
+            <FormLabel htmlFor='message-output'>🔮 Generated Commit Message</FormLabel>
 
-            <select>
+            {/* 余力があればgitも作る、一旦そのまま */}
+            {/* <select>
               <option value=''>GitHub Desktop</option>
               <option value=''>git</option>
-            </select>
+            </select> */}
 
             <input type='text' name='' id='' value={previewCommitMessage} onChange={(e) => setPreviewCommitMessage(e.target.value)} readOnly />
             <textarea className='bg-gray-100 border-dotted border-gray-300' rows={3} name='generatedMessage' id='message-output' value={generatedCommitMessage} onChange={(e) => setGeneratedCommitMessage(e.target.value)}></textarea>
@@ -154,7 +179,9 @@ function App() {
                 </FormButton>
               </li>
               <li className='flex-1'>
-                <FormButton type='copy'>COPY</FormButton>
+                <FormButton type='copy' onClick={copy}>
+                  {copyButtonText}
+                </FormButton>
               </li>
             </ul>
           </FormItem>

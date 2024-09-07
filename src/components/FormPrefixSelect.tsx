@@ -14,7 +14,7 @@ interface FormPrefixSelectProps {
 
 export default function FormPrefixSelect({ data, onUpdate, selectedPrefixId }: FormPrefixSelectProps) {
   return (
-    <select size={4} value={selectedPrefixId} onChange={(e) => onUpdate(parseInt(e.target.value))}>
+    <select size={4} value={selectedPrefixId} onChange={(e) => onUpdate(parseInt(e.target.value))} id='prefix'>
       {data.map((data) => {
         return <FormPrefixOption key={data.id} id={data.id} emoji={data.emoji} prefixText={data.prefixText} description={data.description} />;
       })}
