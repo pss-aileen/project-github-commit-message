@@ -61,13 +61,11 @@ function App() {
 
   function excuteOption() {
     const currentPrefix = currentPrefixData[selectedPrefixId].option;
-    console.log(currentPrefixData[selectedPrefixId]);
     if (!currentPrefix) {
       setSummary('');
       return;
     }
     if (currentPrefix === 'tilDateSet') {
-      console.log(currentPrefix);
       const today = new Date();
       const year = today.getFullYear();
       const month = today.getMonth();
@@ -91,7 +89,6 @@ function App() {
 
     setCommitMessageData(newData);
     setIsFirstLoad(true);
-    console.log(newData);
   }
 
   return (
