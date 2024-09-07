@@ -124,7 +124,7 @@ function App() {
           </FormButton>
         </div>
 
-        <form>
+        <form className='mt-8'>
           <FormItem>
             <FormLabel htmlFor='type'>📦 Type</FormLabel>
 
@@ -154,7 +154,7 @@ function App() {
             <FormLabel htmlFor='issue'>📍 Issue Number</FormLabel>
 
             <input type='number' value={issueId} name='issue' id='issue' placeholder='XX' autoComplete='off' min='1' max='9999' onChange={(e) => setIssueId(e.target.value)} />
-            <FormDescription>This value will be saved in LocalStorage.</FormDescription>
+            {/* <FormDescription>This value will be saved in LocalStorage.</FormDescription> */}
           </FormItem>
 
           <FormItem>
@@ -168,7 +168,7 @@ function App() {
 
             <input type='text' name='' id='' value={previewCommitMessage} onChange={(e) => setPreviewCommitMessage(e.target.value)} readOnly />
             <textarea className='bg-gray-100 border-dotted border-gray-300' rows={3} name='generatedMessage' id='message-output' value={generatedCommitMessage} onChange={(e) => setGeneratedCommitMessage(e.target.value)}></textarea>
-            <FormDescription>One line is summary. Second line is description.</FormDescription>
+            <FormDescription>The first line is the summary. The second line is the description.</FormDescription>
           </FormItem>
 
           <FormItem>
