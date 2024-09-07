@@ -38,11 +38,45 @@ function App() {
     setSelectedPrefixId(0);
   }, [selectedTypeId]);
 
-  // console.log('selectedTypeId: ', selectedTypeId);
-  // console.log('selectedPrefixId: ', selectedPrefixId);
+  useEffect(() => {
+    excuteOption();
+  }, [currentPrefixData]);
+
+  useEffect(() => {
+    if (!isFirstLoad) return;
+
+    let generatedCommitMessage = '';
+    const prefix = `${commitMessageData.emoji} ${commitMessageData.prefix}:`;
+    generatedCommitMessage += prefix;
+    if (summary) generatedCommitMessage += ' ' + summary;
+    if (issueId) generatedCommitMessage += ' #' + issueId;
+    if (description) generatedCommitMessage += '\n' + description;
+
+    setGeneratedCommitMessage(generatedCommitMessage);
+  }, [commitMessageData]);
 
   function updateSelectedPrefixId(id: number) {
     setSelectedPrefixId(id);
+  }
+
+  function excuteOption() {
+    const currentPrefix = currentPrefixData[selectedPrefixId].option;
+    console.log(currentPrefixData[selectedPrefixId]);
+    if (!currentPrefix) {
+      setSummary('');
+      return;
+    }
+    if (currentPrefix === 'tilDateSet') {
+      console.log(currentPrefix);
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth();
+      const day = today.getDate();
+      const monthShortName = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(today);
+
+      const newSummary = `${day.toString().padStart(2, '0')} ${monthShortName} ${year} Report`;
+      setSummary(newSummary);
+    }
   }
 
   function updateCommitMessageData() {
@@ -59,19 +93,6 @@ function App() {
     setIsFirstLoad(true);
     console.log(newData);
   }
-
-  useEffect(() => {
-    if (!isFirstLoad) return;
-
-    let generatedCommitMessage = '';
-    const prefix = `${commitMessageData.emoji} ${commitMessageData.prefix}:`;
-    generatedCommitMessage += prefix;
-    if (summary) generatedCommitMessage += ' ' + summary;
-    if (issueId) generatedCommitMessage += ' #' + issueId;
-    if (description) generatedCommitMessage += '\n' + description;
-
-    setGeneratedCommitMessage(generatedCommitMessage);
-  }, [commitMessageData]);
 
   return (
     <>
