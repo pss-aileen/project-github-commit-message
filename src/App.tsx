@@ -23,7 +23,14 @@ function App() {
   const [selectedTypeId, setSelectedTypeId] = useState('0');
   const [currentPrefixData, setCurrentPrefixData] = useState(data[Number(selectedTypeId)].prefix);
   const [selectedPrefixId, setSelectedPrefixId] = useState(0);
-  const [commitMessageData, setCommitMessageData] = useState(commitMessageInitialData);
+  const [commitMessageData, setCommitMessageData] = useState<{
+    prefix: string;
+    emoji: string;
+    emojiCode: string;
+    summary: string | null;
+    description: string | null;
+    issueId: string | null;
+  }>(commitMessageInitialData);
   const [summary, setSummary] = useState('');
   const [previousSummary, setPreviousSummary] = useState('');
   const [description, setDescription] = useState('');
@@ -61,7 +68,8 @@ function App() {
   }
 
   function excuteOption() {
-    const currentPrefix = currentPrefixData[selectedPrefixId].option ? currentPrefixData[selectedPrefixId].option : undefined;
+    const selectedPrefix = currentPrefixData[selectedPrefixId];
+    const currentPrefix = 'option' in selectedPrefix ? selectedPrefix.option : undefined;
     if (!currentPrefix) {
       setSummary(previousSummary);
       return;
@@ -84,9 +92,9 @@ function App() {
       prefix: currentPrefixData[selectedPrefixId].prefixText,
       emoji: currentPrefixData[selectedPrefixId].emoji,
       emojiCode: currentPrefixData[selectedPrefixId].emojiCode,
-      summary: summary ? summary : null,
-      description: description ? description : null,
-      issueId: issueId ? issueId : null,
+      summary: summary || '', // summary が null の場合は空文字に設定
+      description: description || '', // description が null の場合は空文字に設定
+      issueId: issueId || null, // issueId が null の場合はそのまま
     };
 
     setCommitMessageData(newData);

@@ -1,4 +1,3 @@
-
 import FormTypeOption from './FormTypeOption';
 
 interface FormTypeSelectProps {
@@ -7,13 +6,13 @@ interface FormTypeSelectProps {
     emoji: string;
     displayName: string;
   }[];
-  onUpdate: (newId: number) => void;
+  onUpdate: (newId: string) => void;
   selectedTypeId: string;
 }
 
 export default function FormTypeSelect({ selectedTypeId, onUpdate, data }: FormTypeSelectProps) {
   return (
-    <select name='type' id='type' value={selectedTypeId} onChange={(e) => onUpdate(parseInt(e.target.value))}>
+    <select name='type' id='type' value={selectedTypeId} onChange={(e) => onUpdate(e.target.value)}>
       {data.map((data) => {
         return <FormTypeOption key={data.id} id={data.id} emoji={data.emoji} displayName={data.displayName} />;
       })}

@@ -1,4 +1,3 @@
-import React from 'react';
 import FormPrefixOption from './FormPrefixOption';
 
 interface FormPrefixSelectProps {
